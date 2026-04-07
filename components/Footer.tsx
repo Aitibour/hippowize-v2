@@ -1,81 +1,99 @@
+import Link from "next/link";
+
+const services = [
+  { href: "/services/strategy-consulting",    label: "Strategy Consulting"    },
+  { href: "/services/digital-transformation", label: "Digital Transformation" },
+  { href: "/services/professional-services",  label: "Professional Services"  },
+  { href: "/services/training-coaching",      label: "Training & Coaching"    },
+];
+
+const company = [
+  { href: "/stories",  label: "Stories"  },
+  { href: "/careers",  label: "Careers"  },
+  { href: "/#why-us",  label: "Why Us"   },
+  { href: "/#contact", label: "Contact"  },
+];
+
 export default function Footer() {
   return (
-    <footer className="site-footer" id="contact">
-      <div className="container footer-top">
-        <div className="footer-column about-footer">
-          <h3>About</h3>
-          <p>
-            Hippowize helps organizations turn strategy into business outcomes —
-            across cybersecurity, digital transformation, professional services,
-            and training.
-          </p>
-          <div className="social-row">
-            <a href="#" aria-label="LinkedIn">
-              <i className="fa-brands fa-linkedin-in" />
-            </a>
-            <a href="#" aria-label="Twitter">
-              <i className="fa-brands fa-twitter" />
-            </a>
-            <a href="#" aria-label="Facebook">
-              <i className="fa-brands fa-facebook-f" />
-            </a>
-            <a href="#" aria-label="Instagram">
-              <i className="fa-brands fa-instagram" />
-            </a>
+    <footer className="footer-v2" id="contact">
+      <div className="container">
+        {/* Top row */}
+        <div className="footer-v2-top">
+          {/* Brand */}
+          <div className="footer-brand-col">
+            <Link href="/" className="footer-brand">
+              <span className="brand-mark">H</span>
+              <span>ippowize</span>
+            </Link>
+            <p>
+              Transforming organizations through strategy, technology, and
+              people — globally.
+            </p>
+            <div className="footer-socials">
+              {[
+                { icon: "fa-linkedin-in",  label: "LinkedIn"  },
+                { icon: "fa-twitter",      label: "Twitter"   },
+                { icon: "fa-facebook-f",   label: "Facebook"  },
+                { icon: "fa-instagram",    label: "Instagram" },
+              ].map((s) => (
+                <a key={s.label} href="#" aria-label={s.label} className="footer-social-btn">
+                  <i className={`fa-brands ${s.icon}`} />
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-        <div className="footer-column">
-          <h3>Services</h3>
-          <a href="#services">Strategy Consulting</a>
-          <a href="#services">Digital Transformation</a>
-          <a href="#services">Professional Services</a>
-          <a href="#services">Training &amp; Coaching</a>
-        </div>
-        <div className="footer-column">
-          <h3>Regions</h3>
-          <a href="#">Toronto</a>
-          <a href="#">Quebec</a>
-          <a href="#">Western Canada</a>
-          <a href="#">Africa</a>
-          <a href="#">Middle East</a>
-        </div>
-        <div className="footer-column">
-          <h3>Contact</h3>
-          <a href="mailto:info@hippowize.com">info@hippowize.com</a>
-          <a href="mailto:sales@hippowize.com">sales@hippowize.com</a>
-          <a href="mailto:mena@hippowize.com">mena@hippowize.com</a>
-        </div>
-      </div>
 
-      <div className="container footer-contact-grid">
-        <article className="footer-contact-card">
-          <i className="fa-solid fa-envelope-open" />
-          <div>
-            <a href="mailto:info@hippowize.com">info@hippowize.com</a>
-            <p>Drop Us a Line</p>
+          {/* Services */}
+          <div className="footer-link-col">
+            <h4>Services</h4>
+            {services.map((s) => (
+              <Link key={s.href} href={s.href}>{s.label}</Link>
+            ))}
           </div>
-        </article>
-        <article className="footer-contact-card active">
-          <i className="fa-solid fa-phone" />
-          <div>
-            <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer">
-              Book a Consultation
-            </a>
-            <p>Schedule via Calendly</p>
-          </div>
-        </article>
-        <article className="footer-contact-card">
-          <i className="fa-solid fa-location-dot" />
-          <div>
-            <strong>Toronto, Canada</strong>
-            <p>Hippowize Inc.</p>
-          </div>
-        </article>
-      </div>
 
-      <div className="copyright">
-        <div className="container">
-          <p>&copy; 2026 Hippowize Inc. All Rights Reserved.</p>
+          {/* Company */}
+          <div className="footer-link-col">
+            <h4>Company</h4>
+            {company.map((c) => (
+              <Link key={c.href} href={c.href}>{c.label}</Link>
+            ))}
+          </div>
+
+          {/* Contact */}
+          <div className="footer-contact-col">
+            <h4>Get in Touch</h4>
+            <a href="mailto:info@hippowize.com" className="footer-contact-item">
+              <i className="fa-solid fa-envelope" />
+              info@hippowize.com
+            </a>
+            <a href="mailto:sales@hippowize.com" className="footer-contact-item">
+              <i className="fa-solid fa-envelope" />
+              sales@hippowize.com
+            </a>
+            <a
+              href="https://calendly.com/hippowize"
+              target="_blank"
+              rel="noreferrer"
+              className="footer-cta-btn"
+            >
+              <i className="fa-solid fa-calendar-check" />
+              Book a Call
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="footer-v2-bottom">
+          <span>&copy; {new Date().getFullYear()} Hippowize Inc. All rights reserved.</span>
+          <div className="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+          </div>
+          <div className="footer-regions">
+            <i className="fa-solid fa-earth-americas" />
+            Toronto · London · Dubai · Johannesburg · São Paulo
+          </div>
         </div>
       </div>
     </footer>

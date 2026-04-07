@@ -15,8 +15,8 @@ export default function Home() {
       <Partners />
       <Services />
       <Creative />
-      <Cover />
       <Testimonials />
+      <Cover />
       <Footer />
     </main>
   );
