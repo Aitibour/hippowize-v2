@@ -90,18 +90,19 @@ export default function Header() {
         </nav>
 
         <div className="header-tools">
-          <form className="search-box" action="#">
-            <input type="search" placeholder="Enter Keyword" aria-label="Search" />
-            <button type="submit" aria-label="Submit search">
-              <i className="fa-solid fa-magnifying-glass" />
-            </button>
-          </form>
+          <a className="lets-talk-btn" href="#contact">
+            Let&apos;s talk
+          </a>
+          <button className="header-icon-btn" aria-label="Search">
+            <i className="fa-solid fa-magnifying-glass" />
+          </button>
+          <span className="header-divider" />
           <button
-            className="theme-toggle"
+            className="header-icon-btn"
             aria-label="Toggle theme"
             onClick={toggleTheme}
           >
-            <i className={isDark ? "fa-regular fa-moon" : "fa-regular fa-sun"} />
+            <i className="fa-solid fa-globe" />
           </button>
         </div>
       </div>
