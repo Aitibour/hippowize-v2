@@ -3,12 +3,12 @@
 import { useRef, useState, useEffect } from "react";
 
 const capabilities = [
-  { icon: "fa-shield-halved",  text: "Proactive threat assessment & continuous monitoring" },
-  { icon: "fa-scale-balanced", text: "GRC alignment & regulatory compliance" },
-  { icon: "fa-robot",          text: "AI-powered threat detection & response" },
-  { icon: "fa-cloud",          text: "Cloud-native security architecture" },
-  { icon: "fa-rotate",        text: "Incident response & business continuity" },
-  { icon: "fa-chart-line",     text: "Security posture reporting for the board" },
+  { text: "Proactive threat assessment & continuous monitoring" },
+  { text: "GRC alignment & regulatory compliance" },
+  { text: "AI-powered threat detection & response" },
+  { text: "Cloud-native security architecture" },
+  { text: "Incident response & business continuity" },
+  { text: "Security posture reporting for the board" },
 ];
 
 function useReveal(threshold = 0.15) {
@@ -40,7 +40,7 @@ export default function Creative() {
 
   return (
     <section className="section creative-v2" id="why-us">
-      {/* ── Video panel ── */}
+      {/* Video panel */}
       <div
         ref={leftReveal.ref}
         className={["creative-video-panel", leftReveal.visible ? "revealed" : ""].join(" ")}
@@ -73,13 +73,20 @@ export default function Creative() {
         </div>
       </div>
 
-      {/* ── Content panel ── */}
+      {/* Content panel */}
       <div
         ref={rightReveal.ref}
         className={["creative-content-panel", rightReveal.visible ? "revealed" : ""].join(" ")}
       >
         <p className="eyebrow">About the Company</p>
-        <h2>Cyber Resilience<br />&amp; Innovation</h2>
+
+        <div className="creative-heading-block">
+          <h2 className="creative-title-main">Cyber Resilience</h2>
+          <h2 className="creative-title-accent">&amp; Innovation</h2>
+        </div>
+
+        <div className="creative-divider" />
+
         <p className="creative-intro">
           Hippowize&apos;s Cyber Resilience Suite combines proactive threat
           assessment, GRC alignment, and continuous monitoring — keeping your
@@ -93,17 +100,16 @@ export default function Creative() {
               className={rightReveal.visible ? "cap-visible" : ""}
               style={{ animationDelay: `${i * 0.1}s` }}
             >
-              <span className="cap-icon">
-                <i className={`fa-solid ${c.icon}`} />
-              </span>
-              <span>{c.text}</span>
+              <span className="cap-index">{String(i + 1).padStart(2, "0")}</span>
+              <span className="cap-bar" />
+              <span className="cap-text">{c.text}</span>
             </li>
           ))}
         </ul>
 
         <div className="creative-cta-row">
           <a className="btn-primary" href="#contact">
-            Book a Assessment
+            Book an Assessment
           </a>
           <a className="creative-learn-link" href="#services">
             <i className="fa-solid fa-arrow-right" /> Explore Services

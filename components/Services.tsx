@@ -77,13 +77,8 @@ export default function Services() {
 
   return (
     <section className="section services-v2" id="services">
-      {/* Background video */}
-      <video className="services-bg-video" autoPlay muted loop playsInline>
-        <source
-          src="https://wp.w3layouts.com/execution/wp-content/themes/execution/assets/videos/video.mp4"
-          type="video/mp4"
-        />
-      </video>
+      {/* Background image (replaces video) */}
+      <div className="services-bg-image" />
       <div className="services-bg-overlay" />
 
       <div className="container" style={{ position: "relative", zIndex: 2 }}>

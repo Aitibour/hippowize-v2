@@ -126,7 +126,6 @@ export default function Header() {
                 {SERVICES.map((s) => (
                   <li key={s.href}>
                     <Link href={s.href} onClick={() => { setOpenDrop(null); setMenuOpen(false); }}>
-                      <span className="drop-icon"><i className={`fa-solid ${s.icon}`} /></span>
                       {s.label}
                     </Link>
                   </li>
@@ -149,7 +148,6 @@ export default function Header() {
                 {INDUSTRIES.map((s) => (
                   <li key={s.href}>
                     <Link href={s.href} onClick={() => { setOpenDrop(null); setMenuOpen(false); }}>
-                      <span className="drop-icon"><i className={`fa-solid ${s.icon}`} /></span>
                       {s.label}
                     </Link>
                   </li>
@@ -161,9 +159,7 @@ export default function Header() {
           <Link href="/stories" className="nav-link" onClick={() => setMenuOpen(false)}>Stories</Link>
           <Link href={href("#why-us")} className="nav-link" onClick={() => setMenuOpen(false)}>Why Us</Link>
           <Link href={href("#contact")} className="nav-link" onClick={() => setMenuOpen(false)}>Contact</Link>
-          <Link href="/careers" className="nav-link nav-careers" onClick={() => setMenuOpen(false)}>
-            <i className="fa-solid fa-briefcase" /> Careers
-          </Link>
+          <Link href="/careers" className="nav-link" onClick={() => setMenuOpen(false)}>Careers</Link>
 
         </nav>
 

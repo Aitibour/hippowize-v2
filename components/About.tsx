@@ -10,24 +10,24 @@ const stats = [
   { value: 10,  suffix: "+", label: "Years Expertise" },
 ];
 
-const features = [
+const pillars = [
   {
-    icon: "fa-chess",
+    num: "01",
     title: "Strategy Consulting",
     body: "Cybersecurity, GRC, and PMO-to-VMO transitions that align technology with your business goals.",
   },
   {
-    icon: "fa-microchip",
+    num: "02",
     title: "Digital Transformation",
     body: "ServiceNow, AI, Data, Cloud, and Automation — end-to-end delivery by proven specialists.",
   },
   {
-    icon: "fa-shield-halved",
+    num: "03",
     title: "Cyber Resilience",
     body: "Proactive threat assessment, GRC alignment, and continuous monitoring to keep you protected.",
   },
   {
-    icon: "fa-users",
+    num: "04",
     title: "Training & Coaching",
     body: "Jira, Confluence, Agile, Scrum, and SAFe — building lasting capability inside your teams.",
   },
@@ -78,12 +78,12 @@ function useReveal(threshold = 0.15) {
 }
 
 export default function About() {
-  const hero = useReveal(0.1);
-  const cards = useReveal(0.1);
+  const hero  = useReveal(0.1);
+  const cards = useReveal(0.08);
 
   return (
     <section className="section about-v2" id="about">
-      {/* ── Hero image left panel ── */}
+      {/* Left image panel */}
       <div
         ref={hero.ref}
         className={["about-hero-panel", hero.visible ? "revealed" : ""].join(" ")}
@@ -116,25 +116,26 @@ export default function About() {
         </div>
       </div>
 
-      {/* ── Feature cards right panel ── */}
+      {/* Right pillars panel */}
       <div
         ref={cards.ref}
         className={["about-cards-panel", cards.visible ? "revealed" : ""].join(" ")}
       >
-        <p className="eyebrow" style={{ marginBottom: 8 }}>What We Do</p>
-        <h3 className="about-cards-heading">Four pillars of transformation</h3>
-        <div className="about-feature-grid">
-          {features.map((f, i) => (
+        <p className="eyebrow" style={{ marginBottom: 6 }}>What We Do</p>
+        <h3 className="about-cards-heading">Four pillars of<br /><em>transformation</em></h3>
+
+        <div className="about-pillars">
+          {pillars.map((p, i) => (
             <div
-              className="about-feature-card"
-              key={f.title}
-              style={{ animationDelay: cards.visible ? `${i * 0.1}s` : "0s" }}
+              key={p.num}
+              className={["about-pillar", cards.visible ? "pillar-in" : ""].join(" ")}
+              style={{ animationDelay: `${i * 0.12}s` }}
             >
-              <div className="about-feature-icon">
-                <i className={`fa-solid ${f.icon}`} />
+              <span className="pillar-num">{p.num}</span>
+              <div className="pillar-body">
+                <h4>{p.title}</h4>
+                <p>{p.body}</p>
               </div>
-              <h4>{f.title}</h4>
-              <p>{f.body}</p>
             </div>
           ))}
         </div>
