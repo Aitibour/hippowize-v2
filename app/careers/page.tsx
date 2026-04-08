@@ -86,7 +86,7 @@ export default function CareersPage() {
             <div className="sp-highlight-box">
               <i className="fa-solid fa-globe sp-highlight-icon" />
               <h3>We Hire Globally</h3>
-              <p>Our team is distributed across Toronto, Montreal, London, Dubai, Johannesburg, and São Paulo. We work with clients in 15+ countries.</p>
+              <p>Hippowize is headquartered in Toronto, Canada. Our consultants are deployed on client engagements across the globe, bringing world-class expertise wherever it&apos;s needed.</p>
               <ul className="sp-check-list">
                 <li><i className="fa-solid fa-check" /> Competitive compensation</li>
                 <li><i className="fa-solid fa-check" /> Certification support</li>

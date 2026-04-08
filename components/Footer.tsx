@@ -6,6 +6,7 @@ const services = [
   { href: "/services/digital-transformation", label: "Digital Transformation" },
   { href: "/services/professional-services",  label: "Professional Services"  },
   { href: "/services/training-coaching",      label: "Training & Coaching"    },
+  { href: "/services/cybersecurity-grc",      label: "Cybersecurity & GRC"   },
 ];
 
 const company = [
@@ -25,11 +26,11 @@ export default function Footer() {
           <div className="footer-brand-col">
             <Link href="/" className="footer-brand">
               <Image src="/logo.svg" alt="Hippowize" width={26} height={29} className="footer-brand-icon" />
-              <span>ippowize</span>
+              <span>hippowize</span>
             </Link>
             <p>
               Transforming organizations through strategy, technology, and
-              people — globally.
+              people — built in Canada, serving the world.
             </p>
             <div className="footer-socials">
               {[
@@ -92,8 +93,8 @@ export default function Footer() {
             <a href="#">Terms of Use</a>
           </div>
           <div className="footer-regions">
-            <i className="fa-solid fa-earth-americas" />
-            Toronto · London · Dubai · Johannesburg · São Paulo
+            <i className="fa-solid fa-location-dot" />
+            Toronto, Canada
           </div>
         </div>
       </div>

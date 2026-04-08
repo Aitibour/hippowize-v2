@@ -40,9 +40,9 @@ const slides = [
   },
   {
     src: "/media/7.mp4",
-    eyebrow: "15+ Countries · 200+ Projects",
+    eyebrow: "200+ Projects · Every Sector",
     headline: "From vision to execution —\nacross every sector",
-    sub: "Hippowize partners with leaders across NA, LATAM, EMEA, and Africa to drive real change.",
+    sub: "Hippowize partners with industry leaders in Canada and globally to drive real, lasting change.",
     cta: "Book a Call",
     href: "https://calendly.com/hippowize",
   },
@@ -187,13 +187,6 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Prev / Next arrows */}
-      <button className="hero-arrow hero-arrow-prev" aria-label="Previous slide" onClick={() => goTo(currentIdx - 1)}>
-        <i className="fa-solid fa-arrow-left" />
-      </button>
-      <button className="hero-arrow hero-arrow-next" aria-label="Next slide" onClick={() => goTo(currentIdx + 1)}>
-        <i className="fa-solid fa-arrow-right" />
-      </button>
     </section>
   );
 }

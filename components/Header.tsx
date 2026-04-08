@@ -218,7 +218,7 @@ export default function Header() {
               aria-expanded={langOpen}
               onClick={() => setLangOpen(o => !o)}
             >
-              <span className="lang-flag">{currentFlag}</span>
+              <i className="fa-solid fa-globe lang-globe" />
               <i className="fa-solid fa-chevron-down lang-chevron" style={{ transform: langOpen ? "rotate(180deg)" : undefined }} />
             </button>
             {langOpen && (
@@ -261,27 +261,6 @@ export default function Header() {
               </div>
             ))}
 
-            {/* Featured column */}
-            <div className="mega-col mega-featured-col">
-              <p className="mega-category">Global Presence</p>
-              <div className="mega-locations">
-                {["Toronto · CA", "London · UK", "Dubai · UAE", "Johannesburg · ZA", "São Paulo · BR"].map(r => (
-                  <span key={r} className="mega-location-item">
-                    <i className="fa-solid fa-location-dot" /> {r}
-                  </span>
-                ))}
-              </div>
-              <a
-                href="https://calendly.com/hippowize"
-                target="_blank"
-                rel="noreferrer"
-                className="mega-cta"
-                onClick={() => setOpenDrop(null)}
-              >
-                <i className="fa-solid fa-calendar-check" />
-                Book a Consultation
-              </a>
-            </div>
           </div>
         </div>
       )}
