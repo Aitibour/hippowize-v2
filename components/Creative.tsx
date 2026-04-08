@@ -3,12 +3,12 @@
 import { useRef, useState, useEffect } from "react";
 
 const capabilities = [
-  { text: "Proactive threat assessment & continuous monitoring" },
-  { text: "GRC alignment & regulatory compliance" },
-  { text: "AI-powered threat detection & response" },
-  { text: "Cloud-native security architecture" },
-  { text: "Incident response & business continuity" },
-  { text: "Security posture reporting for the board" },
+  { text: "Strategy consulting & value management (VMO)" },
+  { text: "Digital transformation & cloud enablement" },
+  { text: "Cybersecurity, GRC & regulatory compliance" },
+  { text: "ServiceNow & enterprise platform delivery" },
+  { text: "Agile coaching, SAFe & organizational capability" },
+  { text: "AI-powered analytics & intelligent automation" },
 ];
 
 function useReveal(threshold = 0.15) {
@@ -67,8 +67,8 @@ export default function Creative() {
             <i className={`fa-solid ${playing ? "fa-pause" : "fa-play"}`} />
           </button>
           <div className="creative-video-label">
-            <span>Cyber Resilience</span>
-            <strong>Suite Demo</strong>
+            <span>Hippowize</span>
+            <strong>in Action</strong>
           </div>
         </div>
       </div>
@@ -78,19 +78,20 @@ export default function Creative() {
         ref={rightReveal.ref}
         className={["creative-content-panel", rightReveal.visible ? "revealed" : ""].join(" ")}
       >
-        <p className="eyebrow">About the Company</p>
+        <p className="eyebrow">About Hippowize</p>
 
         <div className="creative-heading-block">
-          <h2 className="creative-title-main">Cyber Resilience</h2>
-          <h2 className="creative-title-accent">&amp; Innovation</h2>
+          <h2 className="creative-title-main">What We Do —</h2>
+          <h2 className="creative-title-accent">End to End</h2>
         </div>
 
         <div className="creative-divider" />
 
         <p className="creative-intro">
-          Hippowize&apos;s Cyber Resilience Suite combines proactive threat
-          assessment, GRC alignment, and continuous monitoring — keeping your
-          organization protected without slowing your transformation agenda.
+          Hippowize is a Canadian management and technology consulting firm built
+          to deliver transformation that sticks. We combine strategic advisory,
+          deep technical delivery, and organizational capability — staying with
+          our clients from vision through execution.
         </p>
 
         <ul className="capabilities-list">
@@ -108,9 +109,6 @@ export default function Creative() {
         </ul>
 
         <div className="creative-cta-row">
-          <a className="btn-primary" href="#contact">
-            Book an Assessment
-          </a>
           <a className="creative-learn-link" href="#services">
             <i className="fa-solid fa-arrow-right" /> Explore Services
           </a>

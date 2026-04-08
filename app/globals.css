@@ -2845,7 +2845,7 @@ input {
 }
 
 .partner-chip-icon {
-  font-size: 26px;
+  font-size: 34px;
   display: block;
   line-height: 1;
   flex-shrink: 0;
@@ -3536,6 +3536,74 @@ input {
   color: var(--font-color);
 }
 
+/* Careers values grid with images */
+.careers-values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.careers-value-card {
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color-light);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.careers-value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px var(--shadow-color);
+}
+
+.careers-value-img-wrap {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+}
+
+.careers-value-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgb(15 23 42 / 30%), rgb(15 23 42 / 60%));
+}
+
+.careers-value-icon-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  background: var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgb(37 99 235 / 40%);
+}
+
+.careers-value-body {
+  padding: 20px;
+  background: var(--bg-color);
+  flex: 1;
+}
+
+.careers-value-body h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.careers-value-body p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 /* Careers page */
 .careers-list {
   display: flex;
@@ -3696,8 +3764,13 @@ input {
   .sp-grid-3, .sp-grid-4 { grid-template-columns: 1fr; }
   .stories-grid { grid-template-columns: 1fr; }
   .stories-card-grid { grid-template-columns: 1fr; }
+  .careers-values-grid { grid-template-columns: repeat(2, 1fr); }
   .subpage-hero { min-height: auto; padding: 100px 0 60px; }
   .subpage-hero-title { font-size: 28px; }
+}
+
+@media (max-width: 560px) {
+  .careers-values-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 1080px) {
