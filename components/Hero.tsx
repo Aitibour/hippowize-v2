@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
-const TRANSITIONS = ["t-fade", "t-slide-l", "t-slide-r", "t-zoom", "t-blur"] as const;
+const TRANSITIONS = ["t-iris", "t-slash", "t-curtain", "t-ripple", "t-morph"] as const;
 type Transition = typeof TRANSITIONS[number];
 
 const slides = [
@@ -49,7 +49,7 @@ const slides = [
 ];
 
 const AUTOPLAY_MS = 6500;
-const TRANSITION_MS = 900;
+const TRANSITION_MS = 1100;
 
 export default function Hero() {
   // Two video layers for seamless crossfade
@@ -59,7 +59,7 @@ export default function Hero() {
   const [transitioning, setTransitioning] = useState(false);
   const [incoming, setIncoming] = useState<Transition | null>(null);
   const [textKey, setTextKey] = useState(0);
-  const lastT = useRef<Transition>("t-fade");
+  const lastT = useRef<Transition>("t-iris");
 
   const videoA = useRef<HTMLVideoElement>(null);
   const videoB = useRef<HTMLVideoElement>(null);

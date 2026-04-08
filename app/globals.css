@@ -499,33 +499,44 @@ input {
 .layer-top    { z-index: 2; }
 .layer-bottom { z-index: 1; }
 
-/* ── Transition animations ── */
-@keyframes heroFade {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes heroSlideL {
-  from { opacity: 0; transform: translateX(80px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes heroSlideR {
-  from { opacity: 0; transform: translateX(-80px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-@keyframes heroZoom {
-  from { opacity: 0; transform: scale(1.1); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes heroBlur {
-  from { opacity: 0; filter: blur(14px) brightness(0.7); }
-  to   { opacity: 1; filter: blur(0) brightness(1); }
+/* ── Cinematic transition animations ── */
+
+/* 1. Iris — circle expands from screen center */
+@keyframes heroIris {
+  from { clip-path: circle(0% at 50% 50%); opacity: 0.6; }
+  to   { clip-path: circle(150% at 50% 50%); opacity: 1; }
 }
 
-.layer-enter.t-fade    { animation: heroFade    900ms ease both; }
-.layer-enter.t-slide-l { animation: heroSlideL  900ms ease both; }
-.layer-enter.t-slide-r { animation: heroSlideR  900ms ease both; }
-.layer-enter.t-zoom    { animation: heroZoom    900ms ease both; }
-.layer-enter.t-blur    { animation: heroBlur    900ms ease both; }
+/* 2. Slash — diagonal wipe sweeping left to right */
+@keyframes heroSlash {
+  from { clip-path: polygon(110% 0, 110% 0, 130% 100%, 130% 100%); }
+  to   { clip-path: polygon(-20% 0, 110% 0, 130% 100%, -20% 100%); }
+}
+
+/* 3. Curtain — opens outward from vertical center */
+@keyframes heroCurtain {
+  from { clip-path: inset(0 50% 0 50%); }
+  to   { clip-path: inset(0 0% 0 0%); }
+}
+
+/* 4. Ripple — circle bursts from bottom-left corner */
+@keyframes heroRipple {
+  from { clip-path: circle(0% at 5% 95%); opacity: 0.7; }
+  to   { clip-path: circle(170% at 5% 95%); opacity: 1; }
+}
+
+/* 5. Morph — pulls in from depth with a flash of light */
+@keyframes heroMorph {
+  0%   { opacity: 0;   transform: scale(1.18); filter: brightness(1.6) blur(8px); }
+  40%  { opacity: 0.8; filter: brightness(1.0) blur(0); }
+  100% { opacity: 1;   transform: scale(1);    filter: brightness(1); }
+}
+
+.layer-enter.t-iris    { animation: heroIris    1100ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.layer-enter.t-slash   { animation: heroSlash   1100ms cubic-bezier(0.76, 0, 0.24, 1) both; }
+.layer-enter.t-curtain { animation: heroCurtain 1100ms cubic-bezier(0.87, 0, 0.13, 1) both; }
+.layer-enter.t-ripple  { animation: heroRipple  1100ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.layer-enter.t-morph   { animation: heroMorph   1100ms cubic-bezier(0.16, 1, 0.3,  1) both; }
 
 .hero-overlay {
   position: relative;
@@ -543,14 +554,16 @@ input {
 
 /* ── Text enter animation ── */
 @keyframes heroCopyIn {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
+  0%   { opacity: 0; transform: translateY(40px) scale(0.96); filter: blur(6px); }
+  60%  { filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0)  scale(1);    filter: blur(0); }
 }
 
 .hero-copy {
   max-width: 600px;
   margin-top: 80px;
-  animation: heroCopyIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroCopyIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.2s;
 }
 
 .hero-eyebrow {
