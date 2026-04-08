@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import MoveTop from "@/components/MoveTop";
+import Providers from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,9 +31,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.variable}>
-        <Header />
-        {children}
-        <MoveTop />
+        <Providers>
+          <Header />
+          {children}
+          <MoveTop />
+        </Providers>
       </body>
     </html>
   );

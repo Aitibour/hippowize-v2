@@ -4,68 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
-
-const LANGUAGES = [
-  { code: "en", label: "English",  flag: "🇬🇧" },
-  { code: "fr", label: "Français", flag: "🇫🇷" },
-  { code: "es", label: "Español",  flag: "🇪🇸" },
-  { code: "ar", label: "العربية", flag: "🇸🇦" },
-];
-
-const SERVICES_MEGA = [
-  {
-    category: "Advisory",
-    links: [
-      { href: "/services/strategy-consulting",   label: "Strategy Consulting"    },
-      { href: "/services/professional-services", label: "Professional Services"  },
-    ],
-  },
-  {
-    category: "Digital & Technology",
-    links: [
-      { href: "/services/digital-transformation", label: "Digital Transformation" },
-      { href: "/services/cybersecurity-grc",       label: "Cybersecurity & GRC"   },
-    ],
-  },
-  {
-    category: "People & Capability",
-    links: [
-      { href: "/services/training-coaching", label: "Training & Coaching" },
-    ],
-  },
-];
-
-const INDUSTRY_MEGA = [
-  {
-    category: "Technology & Services",
-    links: [
-      { href: "/industry/it-technology", label: "IT & Technology" },
-    ],
-  },
-  {
-    category: "Regulated Industries",
-    links: [
-      { href: "/industry/healthcare",         label: "Healthcare"                 },
-      { href: "/industry/financial-services", label: "Financial Services"         },
-      { href: "/industry/government",         label: "Government & Public Sector" },
-    ],
-  },
-  {
-    category: "Energy & Industry",
-    links: [
-      { href: "/industry/energy-utilities", label: "Energy & Utilities"          },
-      { href: "/industry/manufacturing",    label: "Manufacturing & Supply Chain" },
-    ],
-  },
-];
+import { useLang, LANGUAGES } from "@/lib/i18n";
 
 export default function Header() {
   const pathname = usePathname();
+  const { lang, setLang, t } = useLang();
   const [scrolled,   setScrolled]   = useState(false);
   const [menuOpen,   setMenuOpen]   = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [langOpen,   setLangOpen]   = useState(false);
-  const [activeLang, setActiveLang] = useState("en");
   const [openDrop,   setOpenDrop]   = useState<string | null>(null);
 
   const searchRef = useRef<HTMLInputElement>(null);
@@ -115,7 +62,6 @@ export default function Header() {
     return path;
   }
 
-  const currentFlag = LANGUAGES.find(l => l.code === activeLang)?.flag ?? "🌐";
   const headerClass = ["site-header", scrolled || !isHome ? "scrolled" : ""].filter(Boolean).join(" ");
   const megaOpen = openDrop === "services" || openDrop === "industry";
 
@@ -143,7 +89,7 @@ export default function Header() {
         {/* Nav */}
         <nav className="site-nav" id="site-nav" style={menuOpen ? { display: "flex" } : undefined}>
 
-          <Link href="/" className="nav-link" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link href="/" className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.home}</Link>
 
           {/* Services trigger */}
           <button
@@ -151,7 +97,7 @@ export default function Header() {
             onClick={() => toggleDrop("services")}
             aria-expanded={openDrop === "services"}
           >
-            Services <i className="fa-solid fa-chevron-down nav-chevron" />
+            {t.nav.services} <i className="fa-solid fa-chevron-down nav-chevron" />
           </button>
 
           {/* Industry trigger */}
@@ -160,25 +106,25 @@ export default function Header() {
             onClick={() => toggleDrop("industry")}
             aria-expanded={openDrop === "industry"}
           >
-            Industry <i className="fa-solid fa-chevron-down nav-chevron" />
+            {t.nav.industry} <i className="fa-solid fa-chevron-down nav-chevron" />
           </button>
 
-          <Link href="/stories"            className="nav-link" onClick={() => setMenuOpen(false)}>Stories</Link>
-          <Link href={href("#why-us")}     className="nav-link" onClick={() => setMenuOpen(false)}>Why Us</Link>
-          <Link href={href("#contact")}    className="nav-link" onClick={() => setMenuOpen(false)}>Contact</Link>
-          <Link href="/careers"            className="nav-link" onClick={() => setMenuOpen(false)}>Careers</Link>
+          <Link href="/stories"            className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.stories}</Link>
+          <Link href={href("#why-us")}     className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.whyUs}</Link>
+          <Link href={href("#contact")}    className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.contact}</Link>
+          <Link href="/careers"            className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.careers}</Link>
 
           {/* Mobile-only mini-dropdowns */}
           {menuOpen && openDrop === "services" && (
             <div className="mobile-mega">
-              {SERVICES_MEGA.map(g => g.links.map(l => (
+              {t.servicesMega.map(g => g.links.map(l => (
                 <Link key={l.href} href={l.href} className="mobile-mega-link" onClick={() => { setOpenDrop(null); setMenuOpen(false); }}>{l.label}</Link>
               )))}
             </div>
           )}
           {menuOpen && openDrop === "industry" && (
             <div className="mobile-mega">
-              {INDUSTRY_MEGA.map(g => g.links.map(l => (
+              {t.industryMega.map(g => g.links.map(l => (
                 <Link key={l.href} href={l.href} className="mobile-mega-link" onClick={() => { setOpenDrop(null); setMenuOpen(false); }}>{l.label}</Link>
               )))}
             </div>
@@ -188,7 +134,7 @@ export default function Header() {
         {/* Tools */}
         <div className="header-tools">
           <a className="get-started-btn" href="https://calendly.com/hippowize" target="_blank" rel="noreferrer">
-            Let&apos;s Talk
+            {t.nav.letsGo}
           </a>
 
           <div className={["search-expand-wrap", searchOpen ? "open" : ""].filter(Boolean).join(" ")}>
@@ -227,9 +173,9 @@ export default function Header() {
                   <li
                     key={l.code}
                     role="option"
-                    aria-selected={activeLang === l.code}
-                    className={activeLang === l.code ? "active" : undefined}
-                    onClick={() => { setActiveLang(l.code); setLangOpen(false); }}
+                    aria-selected={lang === l.code}
+                    className={lang === l.code ? "active" : undefined}
+                    onClick={() => { setLang(l.code); setLangOpen(false); }}
                   >
                     <span>{l.label}</span>
                   </li>
@@ -244,7 +190,7 @@ export default function Header() {
       {!menuOpen && megaOpen && (
         <div className="mega-panel" role="navigation">
           <div className="container mega-inner">
-            {(openDrop === "services" ? SERVICES_MEGA : INDUSTRY_MEGA).map((group) => (
+            {(openDrop === "services" ? t.servicesMega : t.industryMega).map((group) => (
               <div key={group.category} className="mega-col">
                 <p className="mega-category">{group.category}</p>
                 <ul className="mega-links">
@@ -259,7 +205,6 @@ export default function Header() {
                 </ul>
               </div>
             ))}
-
           </div>
         </div>
       )}

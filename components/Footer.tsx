@@ -1,22 +1,36 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useLang } from "@/lib/i18n";
 
-const services = [
-  { href: "/services/strategy-consulting",    label: "Strategy Consulting"    },
-  { href: "/services/digital-transformation", label: "Digital Transformation" },
-  { href: "/services/professional-services",  label: "Professional Services"  },
-  { href: "/services/training-coaching",      label: "Training & Coaching"    },
-  { href: "/services/cybersecurity-grc",      label: "Cybersecurity & GRC"   },
+const serviceLinks = [
+  { href: "/services/strategy-consulting",    key: "Strategy Consulting"    },
+  { href: "/services/digital-transformation", key: "Digital Transformation" },
+  { href: "/services/professional-services",  key: "Professional Services"  },
+  { href: "/services/training-coaching",      key: "Training & Coaching"    },
+  { href: "/services/cybersecurity-grc",      key: "Cybersecurity & GRC"   },
 ];
 
-const company = [
-  { href: "/stories",  label: "Stories"  },
-  { href: "/careers",  label: "Careers"  },
-  { href: "/#why-us",  label: "Why Us"   },
-  { href: "/#contact", label: "Contact"  },
+const companyLinks = [
+  { href: "/stories",  key: "Stories"  },
+  { href: "/careers",  key: "Careers"  },
+  { href: "/#why-us",  key: "Why Us"   },
+  { href: "/#contact", key: "Contact"  },
 ];
 
 export default function Footer() {
+  const { t } = useLang();
+
+  // Build translated service/company links from mega menus
+  const allServiceLinks = t.servicesMega.flatMap(g => g.links);
+  const allCompanyLinks = [
+    { href: "/stories",  label: t.nav.stories  },
+    { href: "/careers",  label: t.nav.careers  },
+    { href: "/#why-us",  label: t.nav.whyUs    },
+    { href: "/#contact", label: t.nav.contact  },
+  ];
+
   return (
     <footer className="footer-v2" id="contact">
       <div className="container">
@@ -28,10 +42,7 @@ export default function Footer() {
               <Image src="/logo.svg" alt="Hippowize" width={26} height={29} className="footer-brand-icon" />
               <span>hippowize</span>
             </Link>
-            <p>
-              Transforming organizations through strategy, technology, and
-              people — built in Canada, serving the world.
-            </p>
+            <p>{t.footer.tagline}</p>
             <div className="footer-socials">
               {[
                 { icon: "fa-linkedin-in",  label: "LinkedIn"  },
@@ -48,23 +59,23 @@ export default function Footer() {
 
           {/* Services */}
           <div className="footer-link-col">
-            <h4>Services</h4>
-            {services.map((s) => (
+            <h4>{t.footer.servicesTitle}</h4>
+            {allServiceLinks.map((s) => (
               <Link key={s.href} href={s.href}>{s.label}</Link>
             ))}
           </div>
 
           {/* Company */}
           <div className="footer-link-col">
-            <h4>Company</h4>
-            {company.map((c) => (
+            <h4>{t.footer.companyTitle}</h4>
+            {allCompanyLinks.map((c) => (
               <Link key={c.href} href={c.href}>{c.label}</Link>
             ))}
           </div>
 
           {/* Contact */}
           <div className="footer-contact-col">
-            <h4>Get in Touch</h4>
+            <h4>{t.footer.contactTitle}</h4>
             <a href="mailto:info@hippowize.com" className="footer-contact-item">
               <i className="fa-solid fa-envelope" />
               info@hippowize.com
@@ -80,21 +91,21 @@ export default function Footer() {
               className="footer-cta-btn"
             >
               <i className="fa-solid fa-calendar-check" />
-              Book a Call
+              {t.footer.bookCall}
             </a>
           </div>
         </div>
 
         {/* Bottom bar */}
         <div className="footer-v2-bottom">
-          <span>&copy; {new Date().getFullYear()} Hippowize Inc. All rights reserved.</span>
+          <span>{t.footer.copyright}</span>
           <div className="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
+            <Link href="/privacy-policy">{t.footer.privacy}</Link>
+            <Link href="/terms-of-use">{t.footer.terms}</Link>
           </div>
           <div className="footer-regions">
             <i className="fa-solid fa-location-dot" />
-            Toronto, Canada
+            {t.footer.location}
           </div>
         </div>
       </div>

@@ -1,61 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useLang } from "@/lib/i18n";
 
 const TRANSITIONS = ["t-fade", "t-slide-l", "t-slide-r", "t-zoom", "t-blur"] as const;
 type Transition = typeof TRANSITIONS[number];
-
-const slides = [
-  {
-    src: "/media/2.mp4",
-    eyebrow: "Strategy · Technology · People",
-    headline: "The future belongs to organizations\nthat know how to transform",
-    sub: "Empower your vision with Hippowize's transformative and innovative solutions — globally.",
-    cta: "Explore Services",
-    href: "#services",
-  },
-  {
-    src: "/media/3.mp4",
-    eyebrow: "Strategy Consulting",
-    headline: "Strategy that turns\nambition into measurable outcomes",
-    sub: "From PMO to VMO — we align your technology investments with lasting business value.",
-    cta: "Our Approach",
-    href: "#about",
-  },
-  {
-    src: "/media/4.mp4",
-    eyebrow: "Digital Transformation",
-    headline: "Digital transformation\ndelivered end-to-end",
-    sub: "ServiceNow, AI, Cloud, and Automation — by specialists who stay through execution.",
-    cta: "Our Services",
-    href: "#services",
-  },
-  {
-    src: "/media/6.mp4",
-    eyebrow: "Cyber Resilience",
-    headline: "Building cyber-resilient\norganizations worldwide",
-    sub: "Proactive threat assessment, GRC alignment, and continuous monitoring — without compromise.",
-    cta: "Learn More",
-    href: "#why-us",
-  },
-  {
-    src: "/media/7.mp4",
-    eyebrow: "200+ Projects · Every Sector",
-    headline: "From vision to execution —\nacross every sector",
-    sub: "Hippowize partners with industry leaders in Canada and globally to drive real, lasting change.",
-    cta: "Book a Call",
-    href: "https://calendly.com/hippowize",
-  },
-];
 
 const AUTOPLAY_MS = 6500;
 const TRANSITION_MS = 900;
 
 export default function Hero() {
+  const { t } = useLang();
+  const slides = t.hero;
+
   // Two video layers for seamless crossfade
-  const [layerA, setLayerA] = useState(0);      // slide index on layer A
-  const [layerB, setLayerB] = useState(1);      // slide index on layer B
-  const [top, setTop]       = useState<"A"|"B">("A"); // which layer is currently on top
+  const [layerA, setLayerA] = useState(0);
+  const [layerB, setLayerB] = useState(1);
+  const [top, setTop]       = useState<"A"|"B">("A");
   const [transitioning, setTransitioning] = useState(false);
   const [incoming, setIncoming] = useState<Transition | null>(null);
   const [textKey, setTextKey] = useState(0);
@@ -70,18 +31,18 @@ export default function Hero() {
 
   function pickTransition(): Transition {
     const pool = TRANSITIONS.filter(t => t !== lastT.current);
-    const t = pool[Math.floor(Math.random() * pool.length)];
-    lastT.current = t;
-    return t;
+    const t2 = pool[Math.floor(Math.random() * pool.length)];
+    lastT.current = t2;
+    return t2;
   }
 
   const goTo = useCallback((nextIdx: number) => {
     if (transitioning) return;
     const next = ((nextIdx % slides.length) + slides.length) % slides.length;
-    const t = pickTransition();
+    const t2 = pickTransition();
 
     setTransitioning(true);
-    setIncoming(t);
+    setIncoming(t2);
 
     // Load next slide on the BOTTOM (inactive) layer
     if (top === "A") {
@@ -109,7 +70,7 @@ export default function Hero() {
       setTransitioning(false);
       setTextKey(k => k + 1);
     }, TRANSITION_MS);
-  }, [transitioning, top]);
+  }, [transitioning, top, slides.length]);
 
   // Autoplay
   useEffect(() => {
@@ -119,8 +80,6 @@ export default function Hero() {
   }, [layerA, layerB, top, goTo]);
 
   // Determine classes for each layer
-  // "top" layer = z-index 2, "bottom" = z-index 1
-  // When incoming != null, the NEW top-to-be layer is arriving with animation
   const layerAClass = ["hero-video-layer",
     top === "A" && !incoming ? "layer-top"    : "",
     top === "B" && incoming  ? `layer-top layer-enter ${incoming}` : "",
