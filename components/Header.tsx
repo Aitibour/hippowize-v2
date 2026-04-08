@@ -231,7 +231,6 @@ export default function Header() {
                     className={activeLang === l.code ? "active" : undefined}
                     onClick={() => { setActiveLang(l.code); setLangOpen(false); }}
                   >
-                    <span>{l.flag}</span>
                     <span>{l.label}</span>
                   </li>
                 ))}

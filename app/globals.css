@@ -2810,31 +2810,45 @@ input {
 
 .partners-marquee {
   overflow: hidden;
-  margin-top: 32px;
   border-top: 1px solid var(--border-color-light);
+}
+
+.partners-marquee:last-of-type {
   border-bottom: 1px solid var(--border-color-light);
 }
 
 .partners-track {
   display: flex;
   width: max-content;
-  animation: partnersScroll 28s linear infinite;
+}
+
+.partners-track--fwd {
+  animation: partnersScrollFwd 30s linear infinite;
+}
+
+.partners-track--rev {
+  animation: partnersScrollRev 30s linear infinite;
 }
 
 .partners-track:hover {
   animation-play-state: paused;
 }
 
-@keyframes partnersScroll {
+@keyframes partnersScrollFwd {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
+}
+
+@keyframes partnersScrollRev {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 
 .partner-chip {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 18px 40px;
+  gap: 14px;
+  padding: 22px 48px;
   border-right: 1px solid var(--border-color-light);
   white-space: nowrap;
   transition: background 0.2s;
@@ -2845,16 +2859,17 @@ input {
 }
 
 .partner-chip-icon {
-  font-size: 34px;
+  font-size: 44px;
   display: block;
   line-height: 1;
   flex-shrink: 0;
 }
 
 .partner-chip-name {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   color: var(--heading-color);
+  letter-spacing: -0.01em;
 }
 
 .partner-name {

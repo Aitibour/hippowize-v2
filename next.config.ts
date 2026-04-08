@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "wp.w3layouts.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**",
+      },
     ],
   },
 };

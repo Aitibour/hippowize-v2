@@ -1,8 +1,6 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
-const BASE = "https://wp.w3layouts.com/execution/wp-content/themes/execution/assets/images";
-
 const openings = [
   { title: "ServiceNow Architect",        location: "Toronto, CA (Remote)",  type: "Full-time",  dept: "Digital Transformation" },
   { title: "GRC Consultant",              location: "Toronto, CA (Hybrid)",  type: "Full-time",  dept: "Strategy Consulting"    },
@@ -17,25 +15,25 @@ const values = [
     icon: "fa-earth-americas",
     title: "Global Impact",
     body: "Work on meaningful transformation projects with clients across industries and borders.",
-    img: `${BASE}/testi1.jpg`,
+    img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
   },
   {
     icon: "fa-rocket",
     title: "Grow Fast",
     body: "Accelerate your career with direct client exposure, certifications, and mentorship.",
-    img: `${BASE}/testi2.jpg`,
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80",
   },
   {
     icon: "fa-people-group",
     title: "Diverse Teams",
     body: "Join a team that reflects the global diversity of the clients and communities we serve.",
-    img: `${BASE}/testi3.jpg`,
+    img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80",
   },
   {
     icon: "fa-laptop-house",
     title: "Flexible Work",
     body: "Remote-first culture with options to work from client sites and our Toronto office.",
-    img: `${BASE}/testi1.jpg`,
+    img: "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?auto=format&fit=crop&w=600&q=80",
   },
 ];
 
