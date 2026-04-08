@@ -49,13 +49,12 @@ const slides = [
 ];
 
 const AUTOPLAY_MS = 6500;
-const TRANSITION_MS = 1100;
+const TRANSITION_MS = 1300;
 
 export default function Hero() {
-  // Two video layers for seamless crossfade
-  const [layerA, setLayerA] = useState(0);      // slide index on layer A
-  const [layerB, setLayerB] = useState(1);      // slide index on layer B
-  const [top, setTop]       = useState<"A"|"B">("A"); // which layer is currently on top
+  const [layerA, setLayerA] = useState(0);
+  const [layerB, setLayerB] = useState(1);
+  const [top, setTop]       = useState<"A" | "B">("A");
   const [transitioning, setTransitioning] = useState(false);
   const [incoming, setIncoming] = useState<Transition | null>(null);
   const [textKey, setTextKey] = useState(0);
@@ -65,7 +64,6 @@ export default function Hero() {
   const videoB = useRef<HTMLVideoElement>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Active slide is whichever is on top
   const activeSlide = slides[top === "A" ? layerA : layerB];
 
   function pickTransition(): Transition {
@@ -83,26 +81,18 @@ export default function Hero() {
     setTransitioning(true);
     setIncoming(t);
 
-    // Load next slide on the BOTTOM (inactive) layer
     if (top === "A") {
       setLayerB(next);
       setTimeout(() => {
-        if (videoB.current) {
-          videoB.current.load();
-          videoB.current.play().catch(() => {});
-        }
+        if (videoB.current) { videoB.current.load(); videoB.current.play().catch(() => {}); }
       }, 30);
     } else {
       setLayerA(next);
       setTimeout(() => {
-        if (videoA.current) {
-          videoA.current.load();
-          videoA.current.play().catch(() => {});
-        }
+        if (videoA.current) { videoA.current.load(); videoA.current.play().catch(() => {}); }
       }, 30);
     }
 
-    // Swap after transition duration
     setTimeout(() => {
       setTop(prev => prev === "A" ? "B" : "A");
       setIncoming(null);
@@ -111,54 +101,40 @@ export default function Hero() {
     }, TRANSITION_MS);
   }, [transitioning, top]);
 
-  // Autoplay
   useEffect(() => {
     const curIdx = top === "A" ? layerA : layerB;
     timerRef.current = setTimeout(() => goTo(curIdx + 1), AUTOPLAY_MS);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
   }, [layerA, layerB, top, goTo]);
 
-  // Determine classes for each layer
-  // "top" layer = z-index 2, "bottom" = z-index 1
-  // When incoming != null, the NEW top-to-be layer is arriving with animation
-  const layerAClass = ["hero-video-layer",
-    top === "A" && !incoming ? "layer-top"    : "",
-    top === "B" && incoming  ? `layer-top layer-enter ${incoming}` : "",
-    top === "B" && !incoming ? "layer-bottom" : "",
-    top === "A" && incoming  ? "layer-bottom" : "",
+  // Which layer is currently on top (about to exit) vs bottom (about to enter)
+  const isATop = top === "A";
+
+  const layerAClass = [
+    "hero-video-layer",
+    !incoming &&  isATop ? "layer-top"                           : "",
+    !incoming && !isATop ? "layer-bottom"                        : "",
+    incoming  &&  isATop ? `layer-bottom layer-exit ${incoming}` : "", // A exits
+    incoming  && !isATop ? `layer-top layer-enter ${incoming}`   : "", // A enters
   ].filter(Boolean).join(" ");
 
-  const layerBClass = ["hero-video-layer",
-    top === "B" && !incoming ? "layer-top"    : "",
-    top === "A" && incoming  ? `layer-top layer-enter ${incoming}` : "",
-    top === "A" && !incoming ? "layer-bottom" : "",
-    top === "B" && incoming  ? "layer-bottom" : "",
+  const layerBClass = [
+    "hero-video-layer",
+    !incoming && !isATop ? "layer-top"                           : "",
+    !incoming &&  isATop ? "layer-bottom"                        : "",
+    incoming  && !isATop ? `layer-bottom layer-exit ${incoming}` : "", // B exits
+    incoming  &&  isATop ? `layer-top layer-enter ${incoming}`   : "", // B enters
   ].filter(Boolean).join(" ");
 
   const currentIdx = top === "A" ? layerA : layerB;
 
   return (
     <section className="hero">
-      {/* Layer A */}
-      <video
-        ref={videoA}
-        className={layerAClass}
-        src={slides[layerA].src}
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
+      <video ref={videoA} className={layerAClass} src={slides[layerA].src} autoPlay muted loop playsInline />
+      <video ref={videoB} className={layerBClass} src={slides[layerB].src} muted loop playsInline />
 
-      {/* Layer B */}
-      <video
-        ref={videoB}
-        className={layerBClass}
-        src={slides[layerB].src}
-        muted
-        loop
-        playsInline
-      />
+      {/* Cinematic FX overlay — sits above videos, below text */}
+      <div className={`hero-fx${incoming ? ` fx-on ${incoming}` : ""}`} aria-hidden />
 
       <div className="hero-overlay">
         <div className="container">
@@ -169,13 +145,12 @@ export default function Hero() {
                 <span key={i}>{line}{i < activeSlide.headline.split("\n").length - 1 && <br />}</span>
               ))}
             </h1>
-            <p>{activeSlide.sub}</p>
-            <a className="btn-primary" href={activeSlide.href}>{activeSlide.cta}</a>
+            <p className="hero-sub">{activeSlide.sub}</p>
+            <a className="btn-primary hero-cta" href={activeSlide.href}>{activeSlide.cta}</a>
           </div>
         </div>
       </div>
 
-      {/* Dot indicators */}
       <div className="hero-dots">
         {slides.map((_, i) => (
           <button
@@ -186,7 +161,6 @@ export default function Hero() {
           />
         ))}
       </div>
-
     </section>
   );
 }
