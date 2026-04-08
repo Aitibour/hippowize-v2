@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
 const outcomes = [
@@ -44,8 +45,18 @@ export default function StrategyConsultingPage() {
       </section>
 
       {/* Capabilities */}
-      <section className="sp-section sp-alt">
-        <div className="container">
+      <section className="sp-section sp-alt" style={{ paddingTop: 0 }}>
+        <div className="sp-section-banner">
+          <Image
+            src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80"
+            alt="Strategy consulting"
+            width={1400}
+            height={320}
+            style={{ width: "100%", height: "320px", objectFit: "cover" }}
+          />
+          <div className="sp-section-banner-overlay" />
+        </div>
+        <div className="container" style={{ paddingTop: 56 }}>
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <p className="eyebrow">Capabilities</p>
             <h2>What we deliver</h2>
