@@ -2773,156 +2773,87 @@ input {
 /* ════════════════════════════════════════
    PARTNERS — Dark Grid Redesign
    ════════════════════════════════════════ */
-.partners-v2 {
+/* ── Partners (clean white design) ─────────────────────────────────── */
+.partners-clean {
   padding: 88px 0;
-  background: linear-gradient(140deg, #060D1E 0%, #0F172A 55%, #0C0A1E 100%);
-  position: relative;
-  overflow: hidden;
+  background: #fff;
+  border-top: 1px solid var(--border-color-light);
+  border-bottom: 1px solid var(--border-color-light);
 }
 
-.partners-bg-glow {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.partners-bg-glow--1 {
-  width: 560px;
-  height: 560px;
-  background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);
-  top: -140px;
-  left: -100px;
-}
-
-.partners-bg-glow--2 {
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, rgba(124,58,237,0.14) 0%, transparent 70%);
-  bottom: -100px;
-  right: -80px;
-}
-
-.partners-header {
+.partners-clean-header {
   text-align: center;
   margin-bottom: 56px;
-  position: relative;
-  z-index: 1;
 }
 
-.partners-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  background: rgba(37,99,235,0.15);
-  border: 1px solid rgba(37,99,235,0.35);
-  border-radius: 100px;
-  font-size: 10px;
+.partners-clean-header h2 {
+  font-size: 30px;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #60A5FA;
-  margin-bottom: 18px;
-}
-
-.partners-header h2 {
-  font-size: 34px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 14px;
+  color: var(--heading-color);
+  margin: 8px 0 12px;
   letter-spacing: -0.02em;
-  line-height: 1.2;
 }
 
-.partners-header p {
+.partners-clean-desc {
   font-size: 15px;
-  color: rgba(255,255,255,0.45);
-  margin: 0;
-  max-width: 480px;
-  margin-inline: auto;
+  color: var(--font-color);
+  margin: 0 auto;
+  max-width: 520px;
+  line-height: 1.7;
 }
 
-.partners-logo-grid {
+.partners-clean-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
-  position: relative;
-  z-index: 1;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
 }
 
-.partner-logo-card {
+.partner-clean-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 28px 10px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  gap: 16px;
+  padding: 32px 20px 28px;
+  background: #fff;
+  border: 1px solid var(--border-color-light);
   border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   cursor: default;
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.5s ease, transform 0.5s ease,
-              background 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 
-.partner-logo-card.p-visible {
-  opacity: 1;
-  transform: translateY(0);
+.partner-clean-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(37,99,235,0.12);
+  border-color: rgba(37,99,235,0.25);
 }
 
-.partner-logo-card:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(255,255,255,0.16);
-  transform: translateY(-7px) scale(1.03);
-  box-shadow: 0 28px 64px var(--partner-glow, rgba(37,99,235,0.3));
+.partner-clean-logo-wrap {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.partner-logo-icon-lg {
-  font-size: 48px;
-  line-height: 1;
-  display: block;
-  transition: transform 0.3s ease;
+.partner-clean-img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  transition: transform 0.25s ease;
 }
 
-.partner-logo-card:hover .partner-logo-icon-lg {
-  transform: scale(1.12);
+.partner-clean-card:hover .partner-clean-img {
+  transform: scale(1.1);
 }
 
-.partner-logo-name-lg {
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  text-align: center;
-  white-space: nowrap;
-  transition: color 0.3s;
-}
-
-.partner-logo-card:hover .partner-logo-name-lg {
-  color: rgba(255,255,255,0.88);
-}
-
-/* Legacy orphaned selectors — kept for safety */
-.partner-name {
+.partner-clean-name {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--heading-color);
   text-align: center;
-  white-space: nowrap;
-}
-
-/* Keep old label reference for backward compat */
-.partners-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--font-color);
-  opacity: 0.5;
-  white-space: nowrap;
 }
 
 .partners-track-wrap {
@@ -3653,6 +3584,39 @@ input {
   line-height: 1.65;
 }
 
+/* ── Subpage section image banner ── */
+.sp-section-banner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.sp-section-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.sp-section-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.25) 0%,
+    rgba(248, 250, 255, 0) 40%,
+    rgba(248, 250, 255, 0.5) 80%,
+    var(--bg-soft) 100%
+  );
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .sp-section-banner { height: 220px; }
+}
+
 /* Careers page */
 .careers-list {
   display: flex;
@@ -3810,7 +3774,7 @@ input {
 }
 
 @media (max-width: 1080px) {
-  .partners-logo-grid { grid-template-columns: repeat(4, 1fr); }
+  .partners-clean-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -3820,13 +3784,13 @@ input {
   .careers-values-grid { grid-template-columns: repeat(2, 1fr); }
   .subpage-hero { min-height: auto; padding: 100px 0 60px; }
   .subpage-hero-title { font-size: 28px; }
-  .partners-logo-grid { grid-template-columns: repeat(3, 1fr); }
-  .partners-header h2 { font-size: 26px; }
+  .partners-clean-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-clean-header h2 { font-size: 24px; }
 }
 
 @media (max-width: 480px) {
   .careers-values-grid { grid-template-columns: 1fr; }
-  .partners-logo-grid { grid-template-columns: repeat(2, 1fr); }
+  .partners-clean-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 1080px) {
