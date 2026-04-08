@@ -2824,27 +2824,29 @@ input {
 
 .partner-clean-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(37,99,235,0.12);
-  border-color: rgba(37,99,235,0.25);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: rgba(0,0,0,0.12);
 }
 
-.partner-clean-logo-wrap {
+.partner-clean-icon-wrap {
   width: 80px;
   height: 80px;
+  border-radius: 20px;
+  background: var(--partner-bg, rgba(37,99,235,0.07));
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.25s ease, transform 0.25s ease;
 }
 
-.partner-clean-img {
-  width: 72px;
-  height: 72px;
-  object-fit: contain;
-  transition: transform 0.25s ease;
+.partner-clean-card:hover .partner-clean-icon-wrap {
+  transform: scale(1.08);
 }
 
-.partner-clean-card:hover .partner-clean-img {
-  transform: scale(1.1);
+.partner-clean-icon {
+  font-size: 40px;
+  line-height: 1;
+  display: block;
 }
 
 .partner-clean-name {
@@ -3585,36 +3587,30 @@ input {
 }
 
 /* ── Subpage section image banner ── */
-.sp-section-banner {
+/* ── Subpage intro section with background image ──────────────────── */
+.sp-section--has-bg {
   position: relative;
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-  line-height: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.sp-section-banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.sp-section-banner-overlay {
+.sp-section-bg-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    rgba(15, 23, 42, 0.25) 0%,
-    rgba(248, 250, 255, 0) 40%,
-    rgba(248, 250, 255, 0.5) 80%,
-    var(--bg-soft) 100%
+    105deg,
+    rgba(248,250,255,0.97) 0%,
+    rgba(248,250,255,0.93) 45%,
+    rgba(248,250,255,0.72) 100%
   );
   pointer-events: none;
+  z-index: 0;
 }
 
-@media (max-width: 768px) {
-  .sp-section-banner { height: 220px; }
+.sp-section--has-bg .container {
+  position: relative;
+  z-index: 1;
 }
 
 /* Careers page */

@@ -19,7 +19,8 @@ export default function DigitalTransformationPage() {
       breadcrumbs={[{ label: "Services", href: "/#services" }, { label: "Digital Transformation", href: "/services/digital-transformation" }]}
       accent="#7C3AED"
     >
-      <section className="sp-section">
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80')" }}>
+        <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">
             <div>
@@ -43,18 +44,8 @@ export default function DigitalTransformationPage() {
         </div>
       </section>
 
-      <section className="sp-section sp-alt" style={{ paddingTop: 0 }}>
-        <div className="sp-section-banner">
-          <Image
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80"
-            alt="Digital transformation"
-            width={1400}
-            height={320}
-            style={{ width: "100%", height: "320px", objectFit: "cover" }}
-          />
-          <div className="sp-section-banner-overlay" />
-        </div>
-        <div className="container" style={{ paddingTop: 56 }}>
+      <section className="sp-section sp-alt">
+        <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <p className="eyebrow">Capabilities</p>
             <h2>Our digital practice areas</h2>

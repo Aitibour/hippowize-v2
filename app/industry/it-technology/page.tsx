@@ -46,7 +46,8 @@ export default function ITTechnologyPage() {
       breadcrumbs={[{ label: "IT & Technology", href: "/industry/it-technology" }]}
       accent="#2563EB"
     >
-      <section className="sp-section">
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80')" }}>
+        <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">
             <div>
@@ -69,18 +70,8 @@ export default function ITTechnologyPage() {
         </div>
       </section>
 
-      <section className="sp-section sp-alt" style={{ paddingTop: 0 }}>
-        <div className="sp-section-banner">
-          <Image
-            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80"
-            alt="Technology infrastructure"
-            width={1400}
-            height={320}
-            style={{ width: "100%", height: "320px", objectFit: "cover" }}
-          />
-          <div className="sp-section-banner-overlay" />
-        </div>
-        <div className="container" style={{ paddingTop: 56 }}>
+      <section className="sp-section sp-alt">
+        <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <p className="eyebrow">Solutions</p>
             <h2>What we deliver for IT organizations</h2>

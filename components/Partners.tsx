@@ -1,34 +1,10 @@
 const partners = [
-  {
-    name: "ServiceNow",
-    logo: "https://cdn.simpleicons.org/servicenow/62D84E",
-    url: "#",
-  },
-  {
-    name: "AWS",
-    logo: "https://cdn.simpleicons.org/amazonwebservices/FF9900",
-    url: "#",
-  },
-  {
-    name: "Microsoft",
-    logo: "https://cdn.simpleicons.org/microsoft/00A4EF",
-    url: "#",
-  },
-  {
-    name: "Google Cloud",
-    logo: "https://cdn.simpleicons.org/googlecloud/4285F4",
-    url: "#",
-  },
-  {
-    name: "Salesforce",
-    logo: "https://cdn.simpleicons.org/salesforce/00A1E0",
-    url: "#",
-  },
-  {
-    name: "Atlassian",
-    logo: "https://cdn.simpleicons.org/atlassian/0052CC",
-    url: "#",
-  },
+  { name: "ServiceNow", icon: "fa-solid fa-gears",      color: "#62D84E", bg: "rgba(98,216,78,0.08)"  },
+  { name: "AWS",        icon: "fa-brands fa-aws",        color: "#FF9900", bg: "rgba(255,153,0,0.08)" },
+  { name: "Microsoft",  icon: "fa-brands fa-microsoft",  color: "#00A4EF", bg: "rgba(0,164,239,0.08)" },
+  { name: "Google",     icon: "fa-brands fa-google",     color: "#4285F4", bg: "rgba(66,133,244,0.08)"},
+  { name: "Salesforce", icon: "fa-brands fa-salesforce", color: "#00A1E0", bg: "rgba(0,161,224,0.08)" },
+  { name: "Atlassian",  icon: "fa-brands fa-atlassian",  color: "#0052CC", bg: "rgba(0,82,204,0.08)"  },
 ];
 
 export default function Partners() {
@@ -45,16 +21,13 @@ export default function Partners() {
 
         <div className="partners-clean-grid">
           {partners.map((p) => (
-            <div key={p.name} className="partner-clean-card">
-              <div className="partner-clean-logo-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  width={72}
-                  height={72}
-                  className="partner-clean-img"
-                />
+            <div
+              key={p.name}
+              className="partner-clean-card"
+              style={{ "--partner-bg": p.bg, "--partner-color": p.color } as React.CSSProperties}
+            >
+              <div className="partner-clean-icon-wrap">
+                <i className={`${p.icon} partner-clean-icon`} style={{ color: p.color }} />
               </div>
               <span className="partner-clean-name">{p.name}</span>
             </div>
