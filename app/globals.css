@@ -486,225 +486,50 @@ input {
   background: #0F172A;
 }
 
-/* ═══════════════════════════════════════════════════════
-   HERO VIDEO LAYERS
-═══════════════════════════════════════════════════════ */
+/* Two-layer crossfade system */
 .hero-video-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  will-change: transform, clip-path, opacity, filter;
+  z-index: 0;
 }
+
 .layer-top    { z-index: 2; }
 .layer-bottom { z-index: 1; }
 
-/* ═══════════════════════════════════════════════════════
-   FX OVERLAY — sits above video layers, below text
-═══════════════════════════════════════════════════════ */
-.hero-fx {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  opacity: 0;
+/* ── Transition animations ── */
+@keyframes heroFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes heroSlideL {
+  from { opacity: 0; transform: translateX(80px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroSlideR {
+  from { opacity: 0; transform: translateX(-80px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroZoom {
+  from { opacity: 0; transform: scale(1.1); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes heroBlur {
+  from { opacity: 0; filter: blur(14px) brightness(0.7); }
+  to   { opacity: 1; filter: blur(0) brightness(1); }
 }
 
-/* ═══════════════════════════════════════════════════════
-   @property — smooth custom-property interpolation
-═══════════════════════════════════════════════════════ */
-@property --blade-x {
-  syntax: '<percentage>';
-  initial-value: 130%;
-  inherits: false;
-}
-@property --iris-r {
-  syntax: '<percentage>';
-  initial-value: 0%;
-  inherits: false;
-}
-@property --ripple-r {
-  syntax: '<percentage>';
-  initial-value: 0%;
-  inherits: false;
-}
+.layer-enter.t-fade    { animation: heroFade    900ms ease both; }
+.layer-enter.t-slide-l { animation: heroSlideL  900ms ease both; }
+.layer-enter.t-slide-r { animation: heroSlideR  900ms ease both; }
+.layer-enter.t-zoom    { animation: heroZoom    900ms ease both; }
+.layer-enter.t-blur    { animation: heroBlur    900ms ease both; }
 
-/* ═══════════════════════════════════════════════════════
-   1. T-IRIS  — Camera lens opening with light burst
-═══════════════════════════════════════════════════════ */
-@keyframes enterIris {
-  0%   { --iris-r: 0%;    transform: scale(1.1);  }
-  100% { --iris-r: 165%;  transform: scale(1);    }
-}
-@keyframes exitIris {
-  0%   { opacity: 1; transform: scale(1); }
-  30%  { opacity: 0; transform: scale(1.04); }
-  100% { opacity: 0; }
-}
-@keyframes fxIris {
-  0%   { opacity: 0; }
-  6%   { opacity: 1; }
-  30%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.layer-enter.t-iris {
-  --iris-r: 0%;
-  clip-path: circle(var(--iris-r) at 32% 50%);
-  animation: enterIris 1300ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.layer-exit.t-iris  { animation: exitIris 1300ms ease both; }
-.hero-fx.fx-on.t-iris {
-  background: radial-gradient(circle at 32% 50%,
-    rgba(255,255,255,0.95) 0%,
-    rgba(255,220,120,0.5)  6%,
-    rgba(255,180,60,0.1)   20%,
-    transparent            40%
-  );
-  animation: fxIris 1300ms ease-out both;
-}
-
-/* ═══════════════════════════════════════════════════════
-   2. T-SLASH — Razor blade diagonal wipe
-═══════════════════════════════════════════════════════ */
-@keyframes enterSlash {
-  from { clip-path: polygon(140% 0, 140% 0, 160% 100%, 160% 100%); }
-  to   { clip-path: polygon(-30% 0, 140% 0, 160% 100%, -30% 100%); }
-}
-@keyframes exitSlash {
-  0%   { opacity: 1; transform: translateX(0) skewX(0deg); }
-  100% { opacity: 0; transform: translateX(-2.5%) skewX(-1deg); }
-}
-@keyframes fxSlash {
-  from { --blade-x: 130%; opacity: 1; }
-  to   { --blade-x: -30%; opacity: 0; }
-}
-
-.layer-enter.t-slash { animation: enterSlash 1300ms cubic-bezier(0.76, 0, 0.24, 1) both; }
-.layer-exit.t-slash  { animation: exitSlash  1300ms cubic-bezier(0.76, 0, 0.24, 1) both; }
-.hero-fx.fx-on.t-slash {
-  --blade-x: 130%;
-  background: linear-gradient(
-    108deg,
-    transparent                     calc(var(--blade-x) - 5%),
-    rgba(180, 220, 255, 0.25)       calc(var(--blade-x) - 2%),
-    rgba(255, 255, 255, 0.9)        calc(var(--blade-x) - 0.4%),
-    rgba(200, 230, 255, 0.95)       var(--blade-x),
-    rgba(255, 255, 255, 0.9)        calc(var(--blade-x) + 0.4%),
-    rgba(180, 220, 255, 0.25)       calc(var(--blade-x) + 2%),
-    transparent                     calc(var(--blade-x) + 5%)
-  );
-  animation: fxSlash 1300ms cubic-bezier(0.76, 0, 0.24, 1) both;
-}
-
-/* ═══════════════════════════════════════════════════════
-   3. T-CURTAIN — Grand theatre exchange
-   Both enter and exit animate simultaneously — incoming
-   opens outward as outgoing closes to center
-═══════════════════════════════════════════════════════ */
-@keyframes enterCurtain {
-  from { clip-path: inset(0 50% 0 50%); transform: scale(1.06); }
-  to   { clip-path: inset(0 0%  0 0%);  transform: scale(1);    }
-}
-@keyframes exitCurtain {
-  from { clip-path: inset(0 0%  0 0%); }
-  to   { clip-path: inset(0 50% 0 50%); }
-}
-@keyframes fxCurtain {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  55%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.layer-enter.t-curtain { animation: enterCurtain 1300ms cubic-bezier(0.87, 0, 0.13, 1) both; }
-.layer-exit.t-curtain  { animation: exitCurtain  1300ms cubic-bezier(0.87, 0, 0.13, 1) both; }
-.hero-fx.fx-on.t-curtain {
-  background: linear-gradient(to right,
-    transparent             44%,
-    rgba(255, 200,  60, 0.25) 47%,
-    rgba(255, 240, 140, 0.8)  49.4%,
-    rgba(255, 255, 255, 0.98) 50%,
-    rgba(255, 240, 140, 0.8)  50.6%,
-    rgba(255, 200,  60, 0.25) 53%,
-    transparent             56%
-  );
-  animation: fxCurtain 1300ms cubic-bezier(0.87, 0, 0.13, 1) both;
-}
-
-/* ═══════════════════════════════════════════════════════
-   4. T-RIPPLE — Shockwave from bottom-left corner
-═══════════════════════════════════════════════════════ */
-@keyframes enterRipple {
-  0%   { --ripple-r: 0%;    transform: scale(1.05); }
-  100% { --ripple-r: 175%;  transform: scale(1);    }
-}
-@keyframes exitRipple {
-  0%   { opacity: 1; filter: brightness(1); }
-  35%  { opacity: 0; filter: brightness(1.3); }
-  100% { opacity: 0; }
-}
-@keyframes fxRipple {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  40%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.layer-enter.t-ripple {
-  --ripple-r: 0%;
-  clip-path: circle(var(--ripple-r) at 6% 94%);
-  animation: enterRipple 1300ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.layer-exit.t-ripple  { animation: exitRipple 1300ms ease both; }
-.hero-fx.fx-on.t-ripple {
-  background: radial-gradient(circle at 6% 94%,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(100, 180, 255, 0.5)  4%,
-    rgba(60,  140, 255, 0.15) 12%,
-    transparent               26%
-  );
-  animation: fxRipple 1300ms ease-out both;
-}
-
-/* ═══════════════════════════════════════════════════════
-   5. T-MORPH — Deep focus pull with vignette
-═══════════════════════════════════════════════════════ */
-@keyframes enterMorph {
-  0%   { opacity: 0;   transform: scale(1.32); filter: blur(18px) brightness(1.7); }
-  25%  { opacity: 1; }
-  65%  { filter: blur(0)  brightness(1.05); }
-  100% { opacity: 1;   transform: scale(1);    filter: blur(0)  brightness(1); }
-}
-@keyframes exitMorph {
-  0%   { opacity: 1;   transform: scale(1);    filter: blur(0) brightness(1); }
-  100% { opacity: 0;   transform: scale(0.88); filter: blur(12px) brightness(0.5); }
-}
-@keyframes fxMorph {
-  0%   { opacity: 0; }
-  8%   { opacity: 0.8; }
-  55%  { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-.layer-enter.t-morph { animation: enterMorph 1300ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-.layer-exit.t-morph  { animation: exitMorph  1300ms cubic-bezier(0.16, 1, 0.3, 1) both; }
-.hero-fx.fx-on.t-morph {
-  background: radial-gradient(ellipse 55% 55% at 50% 50%,
-    transparent               25%,
-    rgba(0,  0,  0, 0.35)     65%,
-    rgba(0,  0,  0, 0.75)    100%
-  );
-  animation: fxMorph 1300ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* ═══════════════════════════════════════════════════════
-   HERO OVERLAY & TEXT
-═══════════════════════════════════════════════════════ */
 .hero-overlay {
   position: relative;
-  z-index: 4;
+  z-index: 3;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -716,24 +541,17 @@ input {
   );
 }
 
-/* ── Staggered text reveal ── */
+/* ── Text enter animation ── */
 @keyframes heroCopyIn {
-  from { opacity: 0; transform: translateY(28px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 .hero-copy {
   max-width: 600px;
   margin-top: 80px;
+  animation: heroCopyIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-
-.hero-copy > * {
-  animation: heroCopyIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-.hero-copy > *:nth-child(1) { animation-delay: 0.12s; }
-.hero-copy > *:nth-child(2) { animation-delay: 0.28s; }
-.hero-copy > *:nth-child(3) { animation-delay: 0.44s; }
-.hero-copy > *:nth-child(4) { animation-delay: 0.58s; }
 
 .hero-eyebrow {
   margin: 0 0 18px;
