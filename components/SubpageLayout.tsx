@@ -12,6 +12,7 @@ interface SubpageLayoutProps {
   description: string;
   breadcrumbs: Breadcrumb[];
   accent?: string;
+  showCTA?: boolean;
   children: React.ReactNode;
 }
 
@@ -21,6 +22,7 @@ export default function SubpageLayout({
   description,
   breadcrumbs,
   accent = "#2563EB",
+  showCTA = true,
   children,
 }: SubpageLayoutProps) {
   return (
@@ -120,9 +122,11 @@ export default function SubpageLayout({
             <p className="eyebrow-light">{eyebrow}</p>
             <h1>{title}</h1>
             <p className="subpage-hero-desc">{description}</p>
-            <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer" className="btn-primary">
-              Book a Consultation
-            </a>
+            {showCTA && (
+              <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer" className="btn-primary">
+                Book a Consultation
+              </a>
+            )}
           </div>
         </div>
       </div>

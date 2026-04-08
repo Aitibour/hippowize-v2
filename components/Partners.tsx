@@ -1,52 +1,42 @@
-const row1 = [
-  { name: "ServiceNow",      icon: "fa-cloud"       },
-  { name: "Microsoft Azure", icon: "fa-microsoft"   },
-  { name: "AWS",             icon: "fa-aws"         },
-  { name: "Google Cloud",    icon: "fa-google"      },
-  { name: "IBM",             icon: "fa-server"      },
-  { name: "Atlassian",       icon: "fa-jira"        },
-];
-
-const row2 = [
-  { name: "Salesforce",      icon: "fa-salesforce"  },
-  { name: "SAP",             icon: "fa-sap"         },
-  { name: "GitHub",          icon: "fa-github"      },
-  { name: "Slack",           icon: "fa-slack"       },
-  { name: "Docker",          icon: "fa-docker"      },
-  { name: "Kubernetes",      icon: "fa-dharmachakra"},
+const partners = [
+  { name: "ServiceNow",      slug: "servicenow",      color: "#62D84E" },
+  { name: "Microsoft Azure", slug: "microsoftazure",  color: "#0078D4" },
+  { name: "AWS",             slug: "amazonaws",       color: "#FF9900" },
+  { name: "Google Cloud",    slug: "googlecloud",     color: "#4285F4" },
+  { name: "IBM",             slug: "ibm",             color: "#052FAD" },
+  { name: "Atlassian",       slug: "atlassian",       color: "#0052CC" },
+  { name: "Salesforce",      slug: "salesforce",      color: "#00A1E0" },
+  { name: "SAP",             slug: "sap",             color: "#0FAAFF" },
+  { name: "GitHub",          slug: "github",          color: "#181717" },
+  { name: "Slack",           slug: "slack",           color: "#4A154B" },
+  { name: "Docker",          slug: "docker",          color: "#2496ED" },
+  { name: "Kubernetes",      slug: "kubernetes",      color: "#326CE5" },
 ];
 
 export default function Partners() {
-  const r1 = [...row1, ...row1];
-  const r2 = [...row2, ...row2];
-
   return (
     <section className="partners-v2">
-      <div className="container partners-header">
-        <span className="partners-line" />
-        <p className="partners-label">Trusted Technology Partners</p>
-        <span className="partners-line" />
-      </div>
-
-      {/* Row 1 — left to right */}
-      <div className="partners-track-wrap" aria-label="Technology partners">
-        <div className="partners-track">
-          {r1.map((p, i) => (
-            <div className="partner-chip" key={`r1-${i}`}>
-              <i className={`fa-brands ${p.icon}`} />
-              <span>{p.name}</span>
-            </div>
-          ))}
+      <div className="container">
+        <div className="partners-heading">
+          <span className="partners-heading-line" />
+          <h2 className="partners-heading-txt">Trusted Technology Partners</h2>
+          <span className="partners-heading-line" />
         </div>
-      </div>
+        <p className="partners-sub">We deliver transformation through the world&apos;s leading technology platforms.</p>
 
-      {/* Row 2 — right to left */}
-      <div className="partners-track-wrap" aria-label="More technology partners">
-        <div className="partners-track partners-track-rev">
-          {r2.map((p, i) => (
-            <div className="partner-chip" key={`r2-${i}`}>
-              <i className={`fa-brands ${p.icon}`} />
-              <span>{p.name}</span>
+        <div className="partners-grid">
+          {partners.map(p => (
+            <div className="partner-card" key={p.name}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={`https://cdn.simpleicons.org/${p.slug}/${p.color.replace("#", "")}`}
+                alt={`${p.name} logo`}
+                width={36}
+                height={36}
+                loading="lazy"
+                className="partner-logo-img"
+              />
+              <span className="partner-name">{p.name}</span>
             </div>
           ))}
         </div>

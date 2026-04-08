@@ -1,62 +1,126 @@
 import SubpageLayout from "@/components/SubpageLayout";
 
 const stories = [
-  { region: "NA", sector: "Financial Services", title: "VMO Transformation for a Major Canadian Bank", outcome: "40% faster portfolio delivery", body: "A top-5 Canadian bank engaged Hippowize to transition their IT function from a traditional PMO to a Value Management Office. Within 18 months, portfolio delivery velocity increased by 40% and executive visibility into investment value improved dramatically.", tags: ["Strategy Consulting", "VMO", "Financial Services"] },
-  { region: "EMEA", sector: "Government", title: "National Cybersecurity Framework for a GCC Ministry", outcome: "ISO 27001 certified in 12 months", body: "Hippowize delivered a comprehensive GRC implementation and cybersecurity framework for a government ministry in the Gulf region, achieving ISO 27001 certification within 12 months of engagement start.", tags: ["Cybersecurity", "GRC", "Government"] },
-  { region: "LATAM", sector: "Healthcare", title: "ServiceNow ITSM for a Brazilian Hospital Network", outcome: "60% reduction in ticket resolution time", body: "A leading hospital network in Brazil deployed ServiceNow ITSM across 12 facilities with Hippowize's delivery team embedded on-site. Ticket resolution time dropped by 60% within the first quarter post-go-live.", tags: ["ServiceNow", "ITSM", "Healthcare"] },
-  { region: "NA", sector: "Energy", title: "Cloud Migration Factory — Canadian Utility", outcome: "Migrated 200+ workloads in 8 months", body: "Hippowize's Cloud Migration Factory methodology helped a major Canadian utility move 200+ workloads from on-premise data centres to Azure with zero critical incidents and full NERC-CIP compliance maintained throughout.", tags: ["Cloud Migration", "Azure", "Energy"] },
-  { region: "EMEA", sector: "IT & Technology", title: "SAFe Transformation for a UK Technology Firm", outcome: "3× improvement in delivery predictability", body: "A 1,200-person technology firm in the UK partnered with Hippowize for a full SAFe transformation. Delivery predictability tripled within two program increments, and employee satisfaction scores increased significantly.", tags: ["SAFe", "Agile", "IT & Technology"] },
-  { region: "Africa", sector: "Financial Services", title: "Digital Banking Platform Launch — Pan-African Bank", outcome: "Launched in 6 countries within 18 months", body: "Hippowize supported a Pan-African financial institution in launching a unified digital banking platform across six markets — managing technology delivery, change management, and regulatory alignment simultaneously.", tags: ["Digital Transformation", "Banking", "Financial Services"] },
+  {
+    region: "NA",
+    sector: "Financial Services",
+    challenge: "Portfolio delivery stalled; no executive visibility into technology value",
+    outcome: "40% faster portfolio delivery",
+    title: "VMO Transformation — Major Canadian Bank",
+    body: "A top-5 Canadian bank engaged Hippowize to transition from a traditional PMO to a Value Management Office. Within 18 months, portfolio delivery velocity increased by 40% and executives gained real-time visibility into investment outcomes.",
+    tags: ["Strategy Consulting", "VMO", "Financial Services"],
+    accentColor: "#2563EB",
+  },
+  {
+    region: "EMEA",
+    sector: "Government",
+    challenge: "Ministry lacked a formal cybersecurity posture and faced audit risk",
+    outcome: "ISO 27001 certified in 12 months",
+    title: "National Cybersecurity Framework — GCC Ministry",
+    body: "Hippowize delivered a comprehensive GRC implementation and cybersecurity framework for a government ministry in the Gulf. ISO 27001 certification was achieved within 12 months of engagement start — on time and under budget.",
+    tags: ["Cybersecurity", "GRC", "Government"],
+    accentColor: "#7C3AED",
+  },
+  {
+    region: "LATAM",
+    sector: "Healthcare",
+    challenge: "12 hospital facilities with fragmented, high-volume IT support queues",
+    outcome: "60% reduction in ticket resolution time",
+    title: "ServiceNow ITSM — Brazilian Hospital Network",
+    body: "A leading hospital network deployed ServiceNow ITSM across 12 facilities with Hippowize embedded on-site. Ticket resolution time dropped by 60% within the first quarter post go-live, freeing clinical staff from IT friction.",
+    tags: ["ServiceNow", "ITSM", "Healthcare"],
+    accentColor: "#059669",
+  },
+  {
+    region: "NA",
+    sector: "Energy",
+    challenge: "200+ aging workloads blocking digital transformation agenda",
+    outcome: "200+ workloads migrated in 8 months",
+    title: "Cloud Migration Factory — Canadian Utility",
+    body: "Hippowize's Cloud Migration Factory methodology moved a major Canadian utility's 200+ workloads from on-premise to Azure in 8 months — with zero critical incidents and full NERC-CIP compliance maintained throughout.",
+    tags: ["Cloud Migration", "Azure", "Energy"],
+    accentColor: "#D97706",
+  },
+  {
+    region: "EMEA",
+    sector: "IT & Technology",
+    challenge: "1,200-person firm unable to predict or sustain delivery across teams",
+    outcome: "3× improvement in delivery predictability",
+    title: "SAFe Transformation — UK Technology Firm",
+    body: "A 1,200-person technology firm partnered with Hippowize for a full SAFe transformation. Delivery predictability tripled within two program increments, and employee satisfaction scores rose significantly across delivery teams.",
+    tags: ["SAFe", "Agile", "IT & Technology"],
+    accentColor: "#2563EB",
+  },
+  {
+    region: "Africa",
+    sector: "Financial Services",
+    challenge: "Pan-African bank needed a unified digital platform across 6 markets simultaneously",
+    outcome: "Launched in 6 countries within 18 months",
+    title: "Digital Banking Platform — Pan-African Bank",
+    body: "Hippowize supported a Pan-African financial institution in launching a unified digital banking platform across six markets simultaneously — managing technology delivery, change management, and regulatory alignment across every country.",
+    tags: ["Digital Transformation", "Banking", "Financial Services"],
+    accentColor: "#F59E0B",
+  },
 ];
 
-const REGION_COLORS: Record<string, string> = { NA: "#2563EB", LATAM: "#059669", EMEA: "#7C3AED", Africa: "#F59E0B" };
+const REGION_COLORS: Record<string, string> = {
+  NA: "#2563EB", LATAM: "#059669", EMEA: "#7C3AED", Africa: "#F59E0B",
+};
 
 export default function StoriesPage() {
   return (
     <SubpageLayout
       eyebrow="Client Stories"
-      title="Stories of Transformation"
-      description="Real outcomes from real organizations. Here's how Hippowize has helped clients across sectors and geographies turn strategy into measurable results."
+      title="Where Hippowize Made a Difference"
+      description="Real engagements. Real outcomes. These are the stories of organizations that chose to transform — and the measurable change that followed."
       breadcrumbs={[{ label: "Stories", href: "/stories" }]}
       accent="#2563EB"
+      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
-            <p className="eyebrow">Case Studies</p>
-            <h2>What transformation looks like in practice</h2>
-            <p style={{ maxWidth: 600, margin: "16px auto 0", lineHeight: 1.75 }}>
-              From Canadian banks to Gulf ministries, healthcare networks to Pan-African digital banking — these are the stories that define Hippowize&apos;s impact.
+          <div className="stories-intro">
+            <p className="eyebrow">Impact Stories</p>
+            <h2>Transformation is not a project.<br />It&apos;s an outcome.</h2>
+            <p>
+              From Canadian banks to Gulf ministries, healthcare networks to Pan-African digital banking —
+              every engagement below represents a real organization that bet on transformation and won.
             </p>
           </div>
 
-          <div className="stories-grid">
-            {stories.map((s) => (
-              <article className="story-card" key={s.title}>
-                <div className="story-card-top">
-                  <span className="region-badge" style={{ background: REGION_COLORS[s.region] ?? "#2563EB" }}>{s.region}</span>
-                  <span className="story-sector">{s.sector}</span>
+          <div className="stories-list">
+            {stories.map((s, i) => (
+              <article key={s.title} className="story-impact-card" style={{ "--story-accent": s.accentColor } as React.CSSProperties}>
+                <div className="story-impact-meta">
+                  <span className="story-region-badge" style={{ background: REGION_COLORS[s.region] }}>{s.region}</span>
+                  <span className="story-sector-label">{s.sector}</span>
+                  <span className="story-num">0{i + 1}</span>
                 </div>
-                <div className="story-outcome">
-                  <i className="fa-solid fa-arrow-trend-up" />
-                  {s.outcome}
+
+                <div className="story-impact-content">
+                  <div className="story-challenge">
+                    <span className="story-challenge-label">Challenge</span>
+                    <p>{s.challenge}</p>
+                  </div>
+
+                  <div className="story-impact-divider" />
+
+                  <div className="story-result">
+                    <div className="story-outcome-badge">
+                      <i className="fa-solid fa-arrow-trend-up" />
+                      {s.outcome}
+                    </div>
+                    <h3>{s.title}</h3>
+                    <p>{s.body}</p>
+                  </div>
                 </div>
-                <h3>{s.title}</h3>
-                <p>{s.body}</p>
-                <div className="story-tags">
-                  {s.tags.map((t) => <span key={t} className="story-tag">{t}</span>)}
+
+                <div className="story-impact-tags">
+                  {s.tags.map(t => <span key={t} className="project-tag">{t}</span>)}
                 </div>
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="sp-cta-band">
-        <div className="container">
-          <h2>Ready to write your transformation story?</h2>
-          <p>Let&apos;s start with a conversation about your goals.</p>
-          <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer" className="btn-primary">Book a Free Consultation</a>
         </div>
       </section>
     </SubpageLayout>

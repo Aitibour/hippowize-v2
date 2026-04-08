@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
@@ -23,7 +24,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand-col">
             <Link href="/" className="footer-brand">
-              <span className="brand-mark">H</span>
+              <Image src="/logo.svg" alt="Hippowize" width={26} height={29} className="footer-brand-icon" />
               <span>ippowize</span>
             </Link>
             <p>

@@ -1,12 +1,36 @@
 import SubpageLayout from "@/components/SubpageLayout";
 
 const solutions = [
-  { icon: "fa-shield-halved",   title: "OT/IT Security",           body: "Securing operational technology and industrial control systems against cyber threats targeting critical infrastructure." },
-  { icon: "fa-bolt",            title: "Grid Modernization",       body: "Digital strategy and technology roadmaps for utilities transitioning to smart grid and distributed energy models." },
-  { icon: "fa-ticket",          title: "Asset Management",         body: "ServiceNow SPM and FSM implementations for managing physical assets, field operations, and maintenance workflows." },
-  { icon: "fa-leaf",            title: "ESG & Sustainability",     body: "Data platforms and reporting frameworks for carbon accounting, ESG disclosure, and sustainability program governance." },
-  { icon: "fa-cloud",           title: "Cloud Transformation",     body: "Migrating energy sector workloads to compliant cloud environments with NERC-CIP and sector-specific controls." },
-  { icon: "fa-robot",           title: "Predictive Maintenance",   body: "AI-powered predictive maintenance models that reduce unplanned downtime and optimize asset lifecycle costs." },
+  { icon: "fa-bolt",            title: "Grid Modernization",        body: "Smart grid architecture, SCADA system integration, and operational technology (OT) platform modernization." },
+  { icon: "fa-shield-halved",   title: "OT/IT Cybersecurity",       body: "Converged OT/IT security frameworks, NERC-CIP compliance, and critical infrastructure protection programs." },
+  { icon: "fa-cloud",           title: "Cloud for Energy",          body: "Cloud migration strategies for energy workloads, maintaining NERC-CIP compliance and operational continuity." },
+  { icon: "fa-leaf",            title: "Sustainability Reporting",  body: "ESG data platforms, carbon tracking, and regulatory sustainability reporting for energy organizations." },
+  { icon: "fa-robot",           title: "AI for Energy Operations",  body: "Predictive maintenance, demand forecasting, and AI-driven asset management for utility companies." },
+  { icon: "fa-diagram-project", title: "Capital Programme Delivery",body: "Complex capital project governance, earned value management, and delivery assurance for infrastructure programmes." },
+];
+
+const projects = [
+  {
+    metric: "200+",
+    metricLabel: "workloads migrated in 8 months",
+    title: "Cloud Migration Factory — Canadian Utility",
+    body: "Hippowize's Cloud Migration Factory methodology helped a major Canadian utility move 200+ workloads from on-premise data centres to Azure with zero critical incidents and full NERC-CIP compliance maintained.",
+    tags: ["Cloud Migration", "Azure", "Energy"],
+  },
+  {
+    metric: "NERC-CIP",
+    metricLabel: "compliant security framework deployed",
+    title: "OT/IT Cybersecurity — North American Power Utility",
+    body: "Hippowize designed and implemented a converged OT/IT cybersecurity framework for a large power utility, achieving full NERC-CIP compliance across operational and enterprise environments.",
+    tags: ["Cybersecurity", "OT/IT", "Compliance"],
+  },
+  {
+    metric: "30%",
+    metricLabel: "reduction in unplanned downtime",
+    title: "Predictive Maintenance AI — Energy Infrastructure Operator",
+    body: "Hippowize built and deployed a predictive maintenance platform for a major energy infrastructure operator, using ML models on sensor data to reduce unplanned downtime by 30% within one year.",
+    tags: ["AI", "Predictive Maintenance", "Energy"],
+  },
 ];
 
 export default function EnergyUtilitiesPage() {
@@ -14,41 +38,42 @@ export default function EnergyUtilitiesPage() {
     <SubpageLayout
       eyebrow="Industries"
       title="Energy & Utilities"
-      description="Hippowize helps energy and utility organizations modernize operations, secure critical infrastructure, and accelerate the transition to sustainable energy delivery."
-      breadcrumbs={[{ label: "Industry", href: "/industry/energy-utilities" }, { label: "Energy & Utilities", href: "/industry/energy-utilities" }]}
-      accent="#F59E0B"
+      description="Grid modernization, OT/IT cybersecurity, and cloud-enabled operations for energy and utility organizations worldwide."
+      breadcrumbs={[{ label: "Energy & Utilities", href: "/industry/energy-utilities" }]}
+      accent="#D97706"
+      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">
           <div className="sp-intro-grid">
             <div>
               <p className="eyebrow">The Challenge</p>
-              <h2>Securing and modernizing critical energy infrastructure</h2>
-              <p>Energy and utility organizations face a convergence of pressures: aging infrastructure, rising cyber threats to operational technology, decarbonization mandates, and the complexity of integrating renewable energy sources into legacy grid architectures.</p>
-              <p>Hippowize brings sector-specific expertise in OT/IT security, asset management, and digital operations to help energy organizations navigate this complexity safely.</p>
-              <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer" className="btn-primary" style={{ marginTop: 28 }}>Talk to an Energy Specialist</a>
+              <h2>Energy organizations must digitize critical infrastructure — safely</h2>
+              <p>The energy sector faces a dual transformation: decarbonization and digitization. Grid modernization, renewable integration, and cloud adoption must happen at scale — without compromising the operational reliability that society depends on.</p>
+              <p>Hippowize brings deep OT/IT expertise, NERC-CIP knowledge, and cloud delivery capability to help energy organizations lead this transition.</p>
             </div>
             <div className="sp-highlight-box">
               <i className="fa-solid fa-bolt sp-highlight-icon" />
-              <h3>Energy Sector Expertise</h3>
-              <p>We understand the unique requirements of critical infrastructure — from NERC-CIP compliance to field operations management.</p>
+              <h3>Our Energy Expertise</h3>
               <ul className="sp-check-list">
-                <li><i className="fa-solid fa-check" /> OT/IT security specialists</li>
-                <li><i className="fa-solid fa-check" /> NERC-CIP compliance experience</li>
-                <li><i className="fa-solid fa-check" /> Smart grid & IoT expertise</li>
+                <li><i className="fa-solid fa-check" /> NERC-CIP &amp; OT/IT security</li>
+                <li><i className="fa-solid fa-check" /> Cloud migration (energy workloads)</li>
+                <li><i className="fa-solid fa-check" /> Grid modernization</li>
+                <li><i className="fa-solid fa-check" /> AI &amp; predictive maintenance</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
+
       <section className="sp-section sp-alt">
         <div className="container">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <p className="eyebrow">Solutions</p>
-            <h2>What we deliver for energy & utilities</h2>
+            <h2>What we deliver for energy organizations</h2>
           </div>
           <div className="sp-grid-3">
-            {solutions.map((s) => (
+            {solutions.map(s => (
               <div className="sp-capability-card" key={s.title}>
                 <div className="sp-cap-icon"><i className={`fa-solid ${s.icon}`} /></div>
                 <h3>{s.title}</h3>
@@ -58,11 +83,28 @@ export default function EnergyUtilitiesPage() {
           </div>
         </div>
       </section>
-      <section className="sp-cta-band">
+
+      <section className="sp-section">
         <div className="container">
-          <h2>Ready to modernize your energy operations?</h2>
-          <p>Our energy specialists serve utilities, oil & gas, and renewable energy organizations globally.</p>
-          <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer" className="btn-primary">Book a Free Consultation</a>
+          <div style={{ marginBottom: 48 }}>
+            <p className="eyebrow">Project Showcase</p>
+            <h2>Real impact for energy organizations</h2>
+          </div>
+          <div className="project-showcase-grid">
+            {projects.map(p => (
+              <div className="project-card" key={p.title}>
+                <div className="project-metric">
+                  <span className="project-metric-num">{p.metric}</span>
+                  <span className="project-metric-label">{p.metricLabel}</span>
+                </div>
+                <h3 className="project-title">{p.title}</h3>
+                <p className="project-body">{p.body}</p>
+                <div className="project-tags">
+                  {p.tags.map(t => <span key={t} className="project-tag">{t}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </SubpageLayout>
