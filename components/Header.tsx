@@ -24,6 +24,7 @@ const SERVICES_MEGA = [
     category: "Digital & Technology",
     links: [
       { href: "/services/digital-transformation", label: "Digital Transformation" },
+      { href: "/services/cybersecurity-grc",       label: "Cybersecurity & GRC"   },
     ],
   },
   {
@@ -44,15 +45,16 @@ const INDUSTRY_MEGA = [
   {
     category: "Regulated Industries",
     links: [
-      { href: "/industry/healthcare",         label: "Healthcare"              },
-      { href: "/industry/financial-services", label: "Financial Services"      },
+      { href: "/industry/healthcare",         label: "Healthcare"                 },
+      { href: "/industry/financial-services", label: "Financial Services"         },
       { href: "/industry/government",         label: "Government & Public Sector" },
     ],
   },
   {
-    category: "Energy & Infrastructure",
+    category: "Energy & Industry",
     links: [
-      { href: "/industry/energy-utilities", label: "Energy & Utilities" },
+      { href: "/industry/energy-utilities", label: "Energy & Utilities"          },
+      { href: "/industry/manufacturing",    label: "Manufacturing & Supply Chain" },
     ],
   },
 ];
@@ -124,7 +126,7 @@ export default function Header() {
         {/* Logo */}
         <Link className="brand" href="/">
           <Image src="/logo.svg" alt="Hippowize icon" width={32} height={35} className="brand-icon" />
-          <span className="brand-text">ippowize</span>
+          <span className="brand-text">hippowize</span>
         </Link>
 
         {/* Hamburger */}

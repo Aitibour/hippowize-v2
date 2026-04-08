@@ -41,7 +41,6 @@ export default function GovernmentPage() {
       description="Sovereign cloud, cybersecurity, and digital service delivery for government organizations — with the governance rigour public accountability demands."
       breadcrumbs={[{ label: "Government & Public Sector", href: "/industry/government" }]}
       accent="#1E40AF"
-      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">

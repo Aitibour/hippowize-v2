@@ -44,7 +44,6 @@ export default function ITTechnologyPage() {
       description="Helping technology organizations accelerate delivery, modernize infrastructure, and build the security posture their business demands."
       breadcrumbs={[{ label: "IT & Technology", href: "/industry/it-technology" }]}
       accent="#2563EB"
-      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">

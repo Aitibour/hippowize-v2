@@ -41,7 +41,6 @@ export default function HealthcarePage() {
       description="Modernizing healthcare IT, securing patient data, and enabling digital care delivery — with deep respect for regulatory complexity."
       breadcrumbs={[{ label: "Healthcare", href: "/industry/healthcare" }]}
       accent="#059669"
-      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">

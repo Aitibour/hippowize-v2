@@ -10,7 +10,7 @@ const openings = [
 ];
 
 const values = [
-  { icon: "fa-earth-americas", title: "Global Impact",     body: "Work on meaningful transformation projects across NA, LATAM, EMEA, and Africa." },
+  { icon: "fa-earth-americas", title: "Global Impact",     body: "Work on meaningful transformation projects across six continents with clients in 15+ countries." },
   { icon: "fa-rocket",         title: "Grow Fast",          body: "Accelerate your career with direct client exposure, certifications, and mentorship." },
   { icon: "fa-people-group",   title: "Diverse Teams",      body: "Join a team that reflects the global diversity of the clients and communities we serve." },
   { icon: "fa-laptop-house",   title: "Flexible Work",      body: "Remote-first culture with options to work from client sites and regional offices." },
@@ -24,6 +24,7 @@ export default function CareersPage() {
       description="We're building a global team of consultants, technologists, and coaches who are passionate about transforming organizations. Come build something meaningful."
       breadcrumbs={[{ label: "Careers", href: "/careers" }]}
       accent="#2563EB"
+      compact
     >
       {/* Values */}
       <section className="sp-section">

@@ -41,7 +41,6 @@ export default function FinancialServicesPage() {
       description="Compliance-first transformation for banks, insurers, and capital markets firms — delivered at the pace the market demands."
       breadcrumbs={[{ label: "Financial Services", href: "/industry/financial-services" }]}
       accent="#7C3AED"
-      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">

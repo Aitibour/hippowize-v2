@@ -41,7 +41,6 @@ export default function EnergyUtilitiesPage() {
       description="Grid modernization, OT/IT cybersecurity, and cloud-enabled operations for energy and utility organizations worldwide."
       breadcrumbs={[{ label: "Energy & Utilities", href: "/industry/energy-utilities" }]}
       accent="#D97706"
-      showCTA={false}
     >
       <section className="sp-section">
         <div className="container">

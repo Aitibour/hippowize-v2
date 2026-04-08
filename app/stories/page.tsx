@@ -2,7 +2,6 @@ import SubpageLayout from "@/components/SubpageLayout";
 
 const stories = [
   {
-    region: "NA",
     sector: "Financial Services",
     challenge: "Portfolio delivery stalled; no executive visibility into technology value",
     outcome: "40% faster portfolio delivery",
@@ -12,7 +11,6 @@ const stories = [
     accentColor: "#2563EB",
   },
   {
-    region: "EMEA",
     sector: "Government",
     challenge: "Ministry lacked a formal cybersecurity posture and faced audit risk",
     outcome: "ISO 27001 certified in 12 months",
@@ -22,7 +20,6 @@ const stories = [
     accentColor: "#7C3AED",
   },
   {
-    region: "LATAM",
     sector: "Healthcare",
     challenge: "12 hospital facilities with fragmented, high-volume IT support queues",
     outcome: "60% reduction in ticket resolution time",
@@ -32,7 +29,6 @@ const stories = [
     accentColor: "#059669",
   },
   {
-    region: "NA",
     sector: "Energy",
     challenge: "200+ aging workloads blocking digital transformation agenda",
     outcome: "200+ workloads migrated in 8 months",
@@ -42,7 +38,6 @@ const stories = [
     accentColor: "#D97706",
   },
   {
-    region: "EMEA",
     sector: "IT & Technology",
     challenge: "1,200-person firm unable to predict or sustain delivery across teams",
     outcome: "3× improvement in delivery predictability",
@@ -52,7 +47,6 @@ const stories = [
     accentColor: "#2563EB",
   },
   {
-    region: "Africa",
     sector: "Financial Services",
     challenge: "Pan-African bank needed a unified digital platform across 6 markets simultaneously",
     outcome: "Launched in 6 countries within 18 months",
@@ -63,10 +57,6 @@ const stories = [
   },
 ];
 
-const REGION_COLORS: Record<string, string> = {
-  NA: "#2563EB", LATAM: "#059669", EMEA: "#7C3AED", Africa: "#F59E0B",
-};
-
 export default function StoriesPage() {
   return (
     <SubpageLayout
@@ -75,7 +65,7 @@ export default function StoriesPage() {
       description="Real engagements. Real outcomes. These are the stories of organizations that chose to transform — and the measurable change that followed."
       breadcrumbs={[{ label: "Stories", href: "/stories" }]}
       accent="#2563EB"
-      showCTA={false}
+      compact
     >
       <section className="sp-section">
         <div className="container">
@@ -92,7 +82,6 @@ export default function StoriesPage() {
             {stories.map((s, i) => (
               <article key={s.title} className="story-impact-card" style={{ "--story-accent": s.accentColor } as React.CSSProperties}>
                 <div className="story-impact-meta">
-                  <span className="story-region-badge" style={{ background: REGION_COLORS[s.region] }}>{s.region}</span>
                   <span className="story-sector-label">{s.sector}</span>
                   <span className="story-num">0{i + 1}</span>
                 </div>

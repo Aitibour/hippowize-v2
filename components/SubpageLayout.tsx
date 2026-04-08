@@ -12,7 +12,7 @@ interface SubpageLayoutProps {
   description: string;
   breadcrumbs: Breadcrumb[];
   accent?: string;
-  showCTA?: boolean;
+  compact?: boolean;
   children: React.ReactNode;
 }
 
@@ -22,14 +22,16 @@ export default function SubpageLayout({
   description,
   breadcrumbs,
   accent = "#2563EB",
-  showCTA = true,
+  compact = false,
   children,
 }: SubpageLayoutProps) {
   return (
     <>
       {/* Hero */}
-      <div className="subpage-hero" style={{ "--sp-accent": accent } as React.CSSProperties}>
-
+      <div
+        className={["subpage-hero", compact ? "subpage-hero--compact" : ""].filter(Boolean).join(" ")}
+        style={{ "--sp-accent": accent } as React.CSSProperties}
+      >
         {/* Geometric SVG backdrop */}
         <svg
           className="subpage-hero-svg"
@@ -46,28 +48,12 @@ export default function SubpageLayout({
           </defs>
           <rect width="1440" height="480" fill="url(#spGrad)" />
 
-          {/* Diagonal grid */}
+          {/* Grid */}
           {Array.from({ length: 16 }).map((_, i) => (
-            <line
-              key={`v${i}`}
-              x1={i * 96}
-              y1="0"
-              x2={i * 96}
-              y2="480"
-              stroke="rgb(255 255 255 / 4%)"
-              strokeWidth="1"
-            />
+            <line key={`v${i}`} x1={i * 96} y1="0" x2={i * 96} y2="480" stroke="rgb(255 255 255 / 4%)" strokeWidth="1" />
           ))}
           {Array.from({ length: 8 }).map((_, i) => (
-            <line
-              key={`h${i}`}
-              x1="0"
-              y1={i * 68}
-              x2="1440"
-              y2={i * 68}
-              stroke="rgb(255 255 255 / 4%)"
-              strokeWidth="1"
-            />
+            <line key={`h${i}`} x1="0" y1={i * 68} x2="1440" y2={i * 68} stroke="rgb(255 255 255 / 4%)" strokeWidth="1" />
           ))}
 
           {/* Diagonal accent lines */}
@@ -88,22 +74,12 @@ export default function SubpageLayout({
             <circle key={i} cx={cx} cy={cy} r="2.5" fill="rgb(96 165 250 / 70%)" />
           ))}
 
-          {/* Corner bracket accent */}
-          <polyline
-            points="60,60 60,20 100,20"
-            stroke="rgb(37 99 235 / 60%)"
-            strokeWidth="2"
-            fill="none"
-          />
-          <polyline
-            points="1380,420 1380,460 1340,460"
-            stroke="rgb(124 58 237 / 50%)"
-            strokeWidth="2"
-            fill="none"
-          />
+          {/* Corner brackets */}
+          <polyline points="60,60 60,20 100,20" stroke="rgb(37 99 235 / 60%)" strokeWidth="2" fill="none" />
+          <polyline points="1380,420 1380,460 1340,460" stroke="rgb(124 58 237 / 50%)" strokeWidth="2" fill="none" />
         </svg>
 
-        {/* Content glass card */}
+        {/* Floating content — no glass card */}
         <div className="container subpage-hero-inner">
           <nav className="subpage-breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>
@@ -118,15 +94,10 @@ export default function SubpageLayout({
             ))}
           </nav>
 
-          <div className="subpage-hero-glass">
-            <p className="eyebrow-light">{eyebrow}</p>
-            <h1>{title}</h1>
+          <div className="subpage-hero-content">
+            <span className="subpage-hero-eyebrow">{eyebrow}</span>
+            <h1 className="subpage-hero-title">{title}</h1>
             <p className="subpage-hero-desc">{description}</p>
-            {showCTA && (
-              <a href="https://calendly.com/hippowize" target="_blank" rel="noreferrer" className="btn-primary">
-                Book a Consultation
-              </a>
-            )}
           </div>
         </div>
       </div>
