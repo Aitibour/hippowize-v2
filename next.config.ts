@@ -22,12 +22,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  output: "export",
   compress: true,
   trailingSlash: false,
-  async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
-  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
