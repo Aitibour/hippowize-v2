@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useMemo } from "react";
 import { useLang } from "@/lib/i18n";
 
 const serviceLinks = [
@@ -23,13 +24,14 @@ export default function Footer() {
   const { t } = useLang();
 
   // Build translated service/company links from mega menus
-  const allServiceLinks = t.servicesMega.flatMap(g => g.links);
-  const allCompanyLinks = [
-    { href: "/stories",  label: t.nav.stories  },
-    { href: "/careers",  label: t.nav.careers  },
-    { href: "/#why-us",  label: t.nav.whyUs    },
-    { href: "/#contact", label: t.nav.contact  },
-  ];
+  const allServiceLinks = useMemo(() => t.servicesMega.flatMap(g => g.links), [t.servicesMega]);
+  const allCompanyLinks = useMemo(() => [
+    { href: "/about",    label: "About"         },
+    { href: "/stories",  label: t.nav.stories   },
+    { href: "/careers",  label: t.nav.careers   },
+    { href: "/contact",  label: "Contact"       },
+    { href: "/#why-us",  label: t.nav.whyUs     },
+  ], [t.nav]);
 
   return (
     <footer className="footer-v2" id="contact">

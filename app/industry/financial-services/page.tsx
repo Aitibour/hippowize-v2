@@ -48,6 +48,7 @@ const projects = [
 export default function FinancialServicesPage() {
   return (
     <SubpageLayout
+      related={[{"label": "Strategy Consulting", "href": "/services/strategy-consulting", "icon": "fa-chess"}, {"label": "Cybersecurity & GRC", "href": "/services/cybersecurity-grc", "icon": "fa-shield-halved"}, {"label": "Government", "href": "/industry/government", "icon": "fa-building-columns"}, {"label": "Client Stories", "href": "/stories", "icon": "fa-star"}]}
       eyebrow="Industries"
       title="Financial Services"
       description="Compliance-first transformation for banks, insurers, and capital markets firms — delivered at the pace the market demands."

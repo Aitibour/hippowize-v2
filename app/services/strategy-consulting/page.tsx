@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   twitter:  { title: "Strategy Consulting", description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory." },
 };
 
+const serviceSchema = {"@context": "https://schema.org", "@type": "Service", "name": "Strategy Consulting", "description": "Align technology investments with lasting business value \u2014 from PMO to VMO, enterprise architecture, and executive advisory.", "provider": {"@type": "Organization", "name": "Hippowize", "url": "https://hippowize-v2.netlify.app"}, "areaServed": "Worldwide", "serviceType": "Management Consulting"};
+
 
 const outcomes = [
   { icon: "fa-chess-king",      title: "PMO to VMO",             body: "Transition from project-focused governance to value-driven operating models that align delivery with strategic outcomes." },
@@ -24,6 +26,8 @@ const outcomes = [
 export default function StrategyConsultingPage() {
   return (
     <SubpageLayout
+      schema={serviceSchema}
+      related={[{"label": "Cybersecurity & GRC", "href": "/services/cybersecurity-grc", "icon": "fa-shield-halved"}, {"label": "Professional Services", "href": "/services/professional-services", "icon": "fa-briefcase"}, {"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "Financial Services", "href": "/industry/financial-services", "icon": "fa-landmark"}, {"label": "Government", "href": "/industry/government", "icon": "fa-building-columns"}]}
       eyebrow="Our Services"
       title="Strategy Consulting"
       description="We align your technology investments with lasting business value through pragmatic strategy, governance frameworks, and executive advisory."

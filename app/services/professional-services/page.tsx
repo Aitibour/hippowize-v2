@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   twitter:  { title: "Professional Services", description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals." },
 };
 
+const serviceSchema = {"@context": "https://schema.org", "@type": "Service", "name": "Professional Services", "description": "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals.", "provider": {"@type": "Organization", "name": "Hippowize", "url": "https://hippowize-v2.netlify.app"}, "areaServed": "Worldwide", "serviceType": "IT Consulting"};
+
 
 const offerings = [
   { icon: "fa-user-tie",      title: "On-Demand Specialists",   body: "Access certified consultants, architects, and engineers for specific project phases — without long-term commitments." },
@@ -24,6 +26,8 @@ const offerings = [
 export default function ProfessionalServicesPage() {
   return (
     <SubpageLayout
+      schema={serviceSchema}
+      related={[{"label": "Strategy Consulting", "href": "/services/strategy-consulting", "icon": "fa-chess"}, {"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "Cybersecurity & GRC", "href": "/services/cybersecurity-grc", "icon": "fa-shield-halved"}, {"label": "Client Stories", "href": "/stories", "icon": "fa-star"}]}
       eyebrow="Our Services"
       title="Professional Services"
       description="On-demand specialists, delivery support, and managed outcomes — the right expertise at the right moment in your transformation journey."

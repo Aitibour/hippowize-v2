@@ -48,6 +48,7 @@ const projects = [
 export default function HealthcarePage() {
   return (
     <SubpageLayout
+      related={[{"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "Professional Services", "href": "/services/professional-services", "icon": "fa-briefcase"}, {"label": "Manufacturing", "href": "/industry/manufacturing", "icon": "fa-industry"}, {"label": "Client Stories", "href": "/stories", "icon": "fa-star"}]}
       eyebrow="Industries"
       title="Healthcare"
       description="Modernizing healthcare IT, securing patient data, and enabling digital care delivery — with deep respect for regulatory complexity."

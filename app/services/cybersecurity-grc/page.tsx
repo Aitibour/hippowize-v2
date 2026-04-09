@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   twitter:  { title: "Cybersecurity  GRC", description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries." },
 };
 
+const serviceSchema = {"@context": "https://schema.org", "@type": "Service", "name": "Cybersecurity & GRC", "description": "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001.", "provider": {"@type": "Organization", "name": "Hippowize", "url": "https://hippowize-v2.netlify.app"}, "areaServed": "Worldwide", "serviceType": "Cybersecurity Consulting"};
+
 
 const solutions = [
   { icon: "fa-shield-halved",   title: "Cybersecurity Strategy",    body: "Risk-aligned cybersecurity roadmaps, security architecture reviews, and executive-level security programme design." },
@@ -48,6 +50,8 @@ const projects = [
 export default function CybersecurityGRCPage() {
   return (
     <SubpageLayout
+      schema={serviceSchema}
+      related={[{"label": "Strategy Consulting", "href": "/services/strategy-consulting", "icon": "fa-chess"}, {"label": "Professional Services", "href": "/services/professional-services", "icon": "fa-briefcase"}, {"label": "Government", "href": "/industry/government", "icon": "fa-building-columns"}, {"label": "Financial Services", "href": "/industry/financial-services", "icon": "fa-landmark"}, {"label": "Healthcare", "href": "/industry/healthcare", "icon": "fa-hospital"}]}
       eyebrow="Services"
       title="Cybersecurity & GRC"
       description="Protect your organization with risk-aligned security programmes, compliance frameworks, and governance structures built for today's threat landscape."

@@ -37,12 +37,19 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
+    const onMouse = (e: MouseEvent) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) setLangOpen(false);
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) setOpenDrop(null);
     };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setLangOpen(false); setOpenDrop(null); }
+    };
+    document.addEventListener("mousedown", onMouse);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onMouse);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
 
   useEffect(() => { setOpenDrop(null); setMenuOpen(false); }, [pathname]);
@@ -104,8 +111,9 @@ export default function Header() {
           </button>
 
           <Link href="/stories"            className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.stories}</Link>
+          <Link href="/about"              className="nav-link" onClick={() => setMenuOpen(false)}>About</Link>
           <Link href={href("#why-us")}     className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.whyUs}</Link>
-          <Link href={href("#contact")}    className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.contact}</Link>
+          <Link href="/contact"            className="nav-link" onClick={() => setMenuOpen(false)}>Contact</Link>
           <Link href="/careers"            className="nav-link" onClick={() => setMenuOpen(false)}>{t.nav.careers}</Link>
 
           {/* Mobile-only mini-dropdowns */}
@@ -142,14 +150,22 @@ export default function Header() {
               <i className="fa-solid fa-chevron-down lang-chevron" style={{ transform: langOpen ? "rotate(180deg)" : undefined }} />
             </button>
             {langOpen && (
-              <ul className="lang-dropdown" role="listbox">
+              <ul
+                className="lang-dropdown"
+                role="listbox"
+                aria-label="Select language"
+                aria-activedescendant={`lang-option-${lang}`}
+              >
                 {LANGUAGES.map(l => (
                   <li
                     key={l.code}
+                    id={`lang-option-${l.code}`}
                     role="option"
                     aria-selected={lang === l.code}
+                    tabIndex={0}
                     className={lang === l.code ? "active" : undefined}
                     onClick={() => { setLang(l.code); setLangOpen(false); }}
+                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { setLang(l.code); setLangOpen(false); } }}
                   >
                     <span>{l.label}</span>
                   </li>

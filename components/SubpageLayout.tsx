@@ -8,6 +8,12 @@ interface Breadcrumb {
   href: string;
 }
 
+interface RelatedLink {
+  label: string;
+  href: string;
+  icon?: string;
+}
+
 interface SubpageLayoutProps {
   eyebrow: string;
   title: string;
@@ -15,6 +21,8 @@ interface SubpageLayoutProps {
   breadcrumbs: Breadcrumb[];
   accent?: string;
   compact?: boolean;
+  schema?: object;
+  related?: RelatedLink[];
   children: React.ReactNode;
 }
 
@@ -25,6 +33,8 @@ export default function SubpageLayout({
   breadcrumbs,
   accent = "#2563EB",
   compact = false,
+  schema,
+  related,
   children,
 }: SubpageLayoutProps) {
   // BreadcrumbList schema — static props only, no user input
@@ -46,6 +56,8 @@ export default function SubpageLayout({
     <>
       {/* BreadcrumbList structured data — static content, no user input */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbSchema }} />
+      {/* Optional service/entity schema */}
+      {schema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />}
 
       {/* Hero */}
       <div
@@ -126,6 +138,25 @@ export default function SubpageLayout({
       <main className="subpage-main">
         {children}
       </main>
+
+      {/* Related content */}
+      {related && related.length > 0 && (
+        <section className="sp-related">
+          <div className="container">
+            <p className="eyebrow" style={{ textAlign: "center", marginBottom: 8 }}>Keep Exploring</p>
+            <h2 className="sp-related-heading">Related Services &amp; Capabilities</h2>
+            <div className="sp-related-grid">
+              {related.map((r) => (
+                <Link key={r.href} href={r.href} className="sp-related-card">
+                  {r.icon && <i className={`fa-solid ${r.icon} sp-related-icon`} />}
+                  <span>{r.label}</span>
+                  <i className="fa-solid fa-arrow-right sp-related-arrow" />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <Footer />
     </>

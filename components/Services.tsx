@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
+import { useReveal } from "@/lib/useReveal";
 
 const BASE = "https://wp.w3layouts.com/execution/wp-content/themes/execution/assets/images";
 
@@ -12,6 +12,7 @@ const services = [
     tag: "Advisory",
     title: "Strategy Consulting",
     tagline: "Align technology with lasting business value",
+    cta: "View Strategy Services",
     img: `${BASE}/s4.jpg`,
     features: [
       "Cybersecurity & GRC frameworks",
@@ -27,6 +28,7 @@ const services = [
     tag: "Digital",
     title: "Digital Transformation",
     tagline: "End-to-end delivery by proven specialists",
+    cta: "View Digital Services",
     img: `${BASE}/s5.jpg`,
     features: [
       "ServiceNow implementation",
@@ -42,6 +44,7 @@ const services = [
     tag: "People",
     title: "Training & Coaching",
     tagline: "Build lasting agility inside your teams",
+    cta: "View Training Programs",
     img: `${BASE}/s2.jpg`,
     features: [
       "Agile & SAFe transformation",
@@ -53,22 +56,9 @@ const services = [
   },
 ];
 
-function useReveal() {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold: 0.05 }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, []);
-  return { ref, visible };
-}
 
 export default function Services() {
-  const reveal = useReveal();
+  const reveal = useReveal(0.05);
 
   return (
     <section className="section svc-cards-section" id="services">
@@ -93,6 +83,7 @@ export default function Services() {
               key={s.key}
               href={s.href}
               className="svc-card"
+              aria-label={`Explore ${s.title}`}
               style={{ animationDelay: reveal.visible ? `${i * 0.12}s` : "0s" }}
             >
               {/* Background image */}
@@ -127,8 +118,8 @@ export default function Services() {
                   ))}
                 </ul>
 
-                <span className="svc-card-cta">
-                  Explore <i className="fa-solid fa-arrow-right" />
+                <span className="svc-card-cta" aria-hidden="true">
+                  {s.cta} <i className="fa-solid fa-arrow-right" />
                 </span>
               </div>
 

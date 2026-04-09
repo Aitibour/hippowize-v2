@@ -48,6 +48,7 @@ const projects = [
 export default function GovernmentPage() {
   return (
     <SubpageLayout
+      related={[{"label": "Cybersecurity & GRC", "href": "/services/cybersecurity-grc", "icon": "fa-shield-halved"}, {"label": "Strategy Consulting", "href": "/services/strategy-consulting", "icon": "fa-chess"}, {"label": "Financial Services", "href": "/industry/financial-services", "icon": "fa-landmark"}, {"label": "Client Stories", "href": "/stories", "icon": "fa-star"}]}
       eyebrow="Industries"
       title="Government & Public Sector"
       description="Sovereign cloud, cybersecurity, and digital service delivery for government organizations — with the governance rigour public accountability demands."

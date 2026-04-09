@@ -34,12 +34,12 @@ export default function Hero() {
   // Active slide is whichever is on top
   const activeSlide = slides[top === "A" ? layerA : layerB];
 
-  function pickTransition(): Transition {
+  const pickTransition = useCallback((): Transition => {
     const pool = TRANSITIONS.filter(t => t !== lastT.current);
     const t2 = pool[Math.floor(Math.random() * pool.length)];
     lastT.current = t2;
     return t2;
-  }
+  }, []);
 
   const goTo = useCallback((nextIdx: number) => {
     if (transitioning) return;

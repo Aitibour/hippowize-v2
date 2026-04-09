@@ -51,6 +51,7 @@ const projects = [
 export default function ITTechnologyPage() {
   return (
     <SubpageLayout
+      related={[{"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "Training & Coaching", "href": "/services/training-coaching", "icon": "fa-graduation-cap"}, {"label": "Energy & Utilities", "href": "/industry/energy-utilities", "icon": "fa-bolt"}, {"label": "Client Stories", "href": "/stories", "icon": "fa-star"}]}
       eyebrow="Industries"
       title="IT & Technology"
       description="Helping technology organizations accelerate delivery, modernize infrastructure, and build the security posture their business demands."

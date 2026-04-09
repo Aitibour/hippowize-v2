@@ -7,7 +7,7 @@ import Providers from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "700", "800"],
+  weight: ["300", "400", "700", "800"],
   display: "swap",
   variable: "--font-inter",
 });

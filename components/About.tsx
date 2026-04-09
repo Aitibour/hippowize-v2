@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useReveal } from "@/lib/useReveal";
 
 const stats = [
   { value: 50,  suffix: "+", label: "Organizations Served" },
@@ -37,6 +38,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
   const started = useRef(false);
+  const intervalId = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -48,34 +50,28 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
         const steps = 50;
         const stepVal = value / steps;
         let cur = 0;
-        const id = setInterval(() => {
+        intervalId.current = setInterval(() => {
           cur += stepVal;
-          if (cur >= value) { setCount(value); clearInterval(id); }
-          else setCount(Math.floor(cur));
+          if (cur >= value) {
+            setCount(value);
+            if (intervalId.current) clearInterval(intervalId.current);
+          } else {
+            setCount(Math.floor(cur));
+          }
         }, duration / steps);
       },
       { threshold: 0.4 }
     );
     if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
+    return () => {
+      obs.disconnect();
+      if (intervalId.current) clearInterval(intervalId.current);
+    };
   }, [value]);
 
   return <span ref={ref}>{count}{suffix}</span>;
 }
 
-function useReveal(threshold = 0.15) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
-      { threshold }
-    );
-    if (ref.current) obs.observe(ref.current);
-    return () => obs.disconnect();
-  }, [threshold]);
-  return { ref, visible };
-}
 
 export default function About() {
   const hero  = useReveal(0.1);

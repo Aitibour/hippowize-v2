@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   twitter:  { title: "Training  Coaching", description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization." },
 };
 
+const serviceSchema = {"@context": "https://schema.org", "@type": "Service", "name": "Training & Coaching", "description": "Build lasting internal capability through structured learning programs, coaching, and certification pathways.", "provider": {"@type": "Organization", "name": "Hippowize", "url": "https://hippowize-v2.netlify.app"}, "areaServed": "Worldwide", "serviceType": "Corporate Training"};
+
 
 const programs = [
   { icon: "fa-jira",          title: "Jira & Confluence",     body: "Hands-on training for Atlassian tools — from basic navigation to advanced workflow configuration and reporting." },
@@ -24,6 +26,8 @@ const programs = [
 export default function TrainingCoachingPage() {
   return (
     <SubpageLayout
+      schema={serviceSchema}
+      related={[{"label": "Professional Services", "href": "/services/professional-services", "icon": "fa-briefcase"}, {"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "IT & Technology", "href": "/industry/it-technology", "icon": "fa-server"}, {"label": "Careers", "href": "/careers", "icon": "fa-users"}]}
       eyebrow="Our Services"
       title="Training & Coaching"
       description="Building lasting capability inside your teams — Agile, SAFe, Jira, DevOps, and change management programs delivered by certified practitioners."

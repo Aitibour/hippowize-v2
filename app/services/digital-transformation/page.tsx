@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   twitter:  { title: "Digital Transformation", description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution." },
 };
 
+const serviceSchema = {"@context": "https://schema.org", "@type": "Service", "name": "Digital Transformation", "description": "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution.", "provider": {"@type": "Organization", "name": "Hippowize", "url": "https://hippowize-v2.netlify.app"}, "areaServed": "Worldwide", "serviceType": "Digital Transformation Consulting"};
+
 
 const capabilities = [
   { icon: "fa-ticket",       title: "ServiceNow",          body: "Full-lifecycle ServiceNow delivery — ITSM, HRSD, CSM, SPM, and custom applications built by certified specialists." },
@@ -24,6 +26,8 @@ const capabilities = [
 export default function DigitalTransformationPage() {
   return (
     <SubpageLayout
+      schema={serviceSchema}
+      related={[{"label": "Strategy Consulting", "href": "/services/strategy-consulting", "icon": "fa-chess"}, {"label": "Training & Coaching", "href": "/services/training-coaching", "icon": "fa-graduation-cap"}, {"label": "IT & Technology", "href": "/industry/it-technology", "icon": "fa-server"}, {"label": "Healthcare", "href": "/industry/healthcare", "icon": "fa-hospital"}, {"label": "Energy & Utilities", "href": "/industry/energy-utilities", "icon": "fa-bolt"}]}
       eyebrow="Our Services"
       title="Digital Transformation"
       description="On-demand specialists who deliver end-to-end digital change — ServiceNow, AI, Cloud, and Automation. Not just advice. Real delivery."

@@ -48,6 +48,7 @@ const projects = [
 export default function ManufacturingPage() {
   return (
     <SubpageLayout
+      related={[{"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "Professional Services", "href": "/services/professional-services", "icon": "fa-briefcase"}, {"label": "Energy & Utilities", "href": "/industry/energy-utilities", "icon": "fa-bolt"}, {"label": "Healthcare", "href": "/industry/healthcare", "icon": "fa-hospital"}]}
       eyebrow="Industries"
       title="Manufacturing & Supply Chain"
       description="Smart factory programmes, supply chain digitization, and AI-driven operations for manufacturers competing in a data-driven world."

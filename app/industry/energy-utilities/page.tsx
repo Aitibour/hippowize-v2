@@ -48,6 +48,7 @@ const projects = [
 export default function EnergyUtilitiesPage() {
   return (
     <SubpageLayout
+      related={[{"label": "Digital Transformation", "href": "/services/digital-transformation", "icon": "fa-microchip"}, {"label": "Cybersecurity & GRC", "href": "/services/cybersecurity-grc", "icon": "fa-shield-halved"}, {"label": "Manufacturing", "href": "/industry/manufacturing", "icon": "fa-industry"}, {"label": "Client Stories", "href": "/stories", "icon": "fa-star"}]}
       eyebrow="Industries"
       title="Energy & Utilities"
       description="Grid modernization, OT/IT cybersecurity, and cloud-enabled operations for energy and utility organizations worldwide."

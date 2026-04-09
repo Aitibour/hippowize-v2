@@ -5,6 +5,8 @@ const BASE = "https://hippowize-v2.netlify.app";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: BASE,                                             lastModified: new Date(), priority: 1.0,  changeFrequency: "weekly"  },
+    { url: `${BASE}/about`,                                  lastModified: new Date(), priority: 0.85, changeFrequency: "monthly" },
+    { url: `${BASE}/contact`,                                lastModified: new Date(), priority: 0.8,  changeFrequency: "monthly" },
     { url: `${BASE}/stories`,                                lastModified: new Date(), priority: 0.8,  changeFrequency: "weekly"  },
     { url: `${BASE}/careers`,                                lastModified: new Date(), priority: 0.7,  changeFrequency: "monthly" },
     // Services
