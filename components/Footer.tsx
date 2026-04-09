@@ -45,12 +45,13 @@ export default function Footer() {
             <p>{t.footer.tagline}</p>
             <div className="footer-socials">
               {[
-                { icon: "fa-linkedin-in",  label: "LinkedIn"  },
-                { icon: "fa-twitter",      label: "Twitter"   },
-                { icon: "fa-facebook-f",   label: "Facebook"  },
-                { icon: "fa-instagram",    label: "Instagram" },
+                { icon: "fa-linkedin-in", label: "LinkedIn",  href: "https://www.linkedin.com/company/hippowize" },
+                { icon: "fa-twitter",     label: "Twitter",   href: "https://twitter.com/hippowize"              },
+                { icon: "fa-facebook-f",  label: "Facebook",  href: "https://www.facebook.com/hippowize"         },
+                { icon: "fa-instagram",   label: "Instagram", href: "https://www.instagram.com/hippowize"        },
               ].map((s) => (
-                <a key={s.label} href="#" aria-label={s.label} className="footer-social-btn">
+                <a key={s.label} href={s.href} aria-label={s.label} className="footer-social-btn"
+                   target="_blank" rel="noopener noreferrer">
                   <i className={`fa-brands ${s.icon}`} />
                 </a>
               ))}

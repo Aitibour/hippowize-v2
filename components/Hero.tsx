@@ -9,6 +9,11 @@ type Transition = typeof TRANSITIONS[number];
 const AUTOPLAY_MS = 6500;
 const TRANSITION_MS = 900;
 
+// Respect user's reduced-motion preference — show first slide only, no autoplay
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export default function Hero() {
   const { t } = useLang();
   const slides = t.hero;
@@ -63,8 +68,10 @@ export default function Hero() {
       }, 30);
     }
 
-    // Swap after transition duration
+    // Swap after transition duration — pause the outgoing layer to release decoder memory
     setTimeout(() => {
+      const outgoing = top === "A" ? videoA : videoB;
+      if (outgoing.current) outgoing.current.pause();
       setTop(prev => prev === "A" ? "B" : "A");
       setIncoming(null);
       setTransitioning(false);
@@ -72,8 +79,9 @@ export default function Hero() {
     }, TRANSITION_MS);
   }, [transitioning, top, slides.length]);
 
-  // Autoplay
+  // Autoplay — disabled if user prefers reduced motion
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const curIdx = top === "A" ? layerA : layerB;
     timerRef.current = setTimeout(() => goTo(curIdx + 1), AUTOPLAY_MS);
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
@@ -98,22 +106,26 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      {/* Layer A */}
+      {/* Layer A — active layer, preload metadata only */}
       <video
         ref={videoA}
         className={layerAClass}
         src={slides[layerA].src}
-        autoPlay
+        poster="/media/hero-poster.jpg"
+        preload="metadata"
+        autoPlay={!prefersReducedMotion}
         muted
         loop
         playsInline
       />
 
-      {/* Layer B */}
+      {/* Layer B — inactive layer, load on demand only */}
       <video
         ref={videoB}
         className={layerBClass}
         src={slides[layerB].src}
+        poster="/media/hero-poster.jpg"
+        preload="none"
         muted
         loop
         playsInline

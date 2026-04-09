@@ -11,11 +11,9 @@ export default function Header() {
   const { lang, setLang, t } = useLang();
   const [scrolled,   setScrolled]   = useState(false);
   const [menuOpen,   setMenuOpen]   = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [langOpen,   setLangOpen]   = useState(false);
   const [openDrop,   setOpenDrop]   = useState<string | null>(null);
 
-  const searchRef = useRef<HTMLInputElement>(null);
   const langRef   = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -37,10 +35,6 @@ export default function Header() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
-
-  useEffect(() => {
-    if (searchOpen) searchRef.current?.focus();
-  }, [searchOpen]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -136,26 +130,6 @@ export default function Header() {
           <a className="get-started-btn" href="https://calendly.com/hippowize" target="_blank" rel="noreferrer">
             {t.nav.letsGo}
           </a>
-
-          <div className={["search-expand-wrap", searchOpen ? "open" : ""].filter(Boolean).join(" ")}>
-            <button
-              className="header-icon-btn"
-              aria-label={searchOpen ? "Close search" : "Open search"}
-              onClick={() => setSearchOpen(o => !o)}
-            >
-              <i className={searchOpen ? "fa-solid fa-xmark" : "fa-solid fa-magnifying-glass"} />
-            </button>
-            <input
-              ref={searchRef}
-              className="search-expand-input"
-              type="search"
-              placeholder="Search…"
-              aria-label="Search"
-              onBlur={() => setSearchOpen(false)}
-            />
-          </div>
-
-          <span className="header-divider" />
 
           <div className="lang-wrap" ref={langRef}>
             <button

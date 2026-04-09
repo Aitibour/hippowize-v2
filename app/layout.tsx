@@ -7,24 +7,65 @@ import Providers from "./providers";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700", "800"],
+  display: "swap",
   variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Hippowize — Transform Today, Thrive Tomorrow",
+  metadataBase: new URL("https://hippowize-v2.netlify.app"),
+  title: {
+    default: "Hippowize — Transform Today, Thrive Tomorrow",
+    template: "%s | Hippowize",
+  },
   description:
     "Hippowize helps organizations turn strategy into measurable business outcomes — across cybersecurity, digital transformation, professional services, and training.",
+  openGraph: {
+    type: "website",
+    locale: "en_CA",
+    url: "https://hippowize-v2.netlify.app",
+    siteName: "Hippowize",
+    title: "Hippowize — Transform Today, Thrive Tomorrow",
+    description:
+      "Hippowize helps organizations turn strategy into measurable business outcomes — across cybersecurity, digital transformation, professional services, and training.",
+    images: [
+      {
+        url: "/og-default.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Hippowize — Transform Today, Thrive Tomorrow",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Hippowize — Transform Today, Thrive Tomorrow",
+    description:
+      "Hippowize helps organizations turn strategy into measurable business outcomes.",
+    images: ["/og-default.jpg"],
+  },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Hippowize",
+  url: "https://hippowize-v2.netlify.app",
+  logo: "https://hippowize-v2.netlify.app/logo.svg",
+  contactPoint: [
+    { "@type": "ContactPoint", email: "info@hippowize.com", contactType: "customer service" },
+    { "@type": "ContactPoint", email: "sales@hippowize.com", contactType: "sales" },
+  ],
+  areaServed: "Worldwide",
+  knowsAbout: ["Cybersecurity", "Digital Transformation", "Strategy Consulting", "Professional Services", "Training and Coaching"],
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -32,6 +73,8 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+        {/* JSON-LD: hardcoded static object, no user input */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
       </head>
       <body className={inter.variable}>
         <Providers>
