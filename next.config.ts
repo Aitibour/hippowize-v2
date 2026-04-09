@@ -23,6 +23,7 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   compress: true,
+  trailingSlash: false,
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },

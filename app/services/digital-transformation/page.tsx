@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Digital Transformation",
   description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/services/digital-transformation" },
   openGraph: { title: "Digital Transformation", description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution." },
   twitter:  { title: "Digital Transformation", description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution." },
 };
@@ -29,7 +30,7 @@ export default function DigitalTransformationPage() {
       breadcrumbs={[{ label: "Services", href: "/#services" }, { label: "Digital Transformation", href: "/services/digital-transformation" }]}
       accent="#7C3AED"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

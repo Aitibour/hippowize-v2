@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Healthcare",
   description: "Clinical IT modernization, data platforms, and compliance solutions for healthcare providers and life sciences organizations.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/industry/healthcare" },
   openGraph: { title: "Healthcare", description: "Clinical IT modernization, data platforms, and compliance solutions for healthcare providers and life sciences organizations." },
   twitter:  { title: "Healthcare", description: "Clinical IT modernization, data platforms, and compliance solutions for healthcare providers and life sciences organizations." },
 };
@@ -53,7 +54,7 @@ export default function HealthcarePage() {
       breadcrumbs={[{ label: "Healthcare", href: "/industry/healthcare" }]}
       accent="#059669"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

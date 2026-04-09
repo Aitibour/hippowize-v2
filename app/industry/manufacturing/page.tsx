@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Manufacturing  Supply Chain",
   description: "Smart manufacturing, ERP optimization, and supply chain resilience programs for industrial organizations.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/industry/manufacturing" },
   openGraph: { title: "Manufacturing  Supply Chain", description: "Smart manufacturing, ERP optimization, and supply chain resilience programs for industrial organizations." },
   twitter:  { title: "Manufacturing  Supply Chain", description: "Smart manufacturing, ERP optimization, and supply chain resilience programs for industrial organizations." },
 };
@@ -53,7 +54,7 @@ export default function ManufacturingPage() {
       breadcrumbs={[{ label: "Manufacturing & Supply Chain", href: "/industry/manufacturing" }]}
       accent="#0891B2"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

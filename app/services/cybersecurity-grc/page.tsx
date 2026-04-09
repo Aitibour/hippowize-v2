@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Cybersecurity  GRC",
   description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/services/cybersecurity-grc" },
   openGraph: { title: "Cybersecurity  GRC", description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries." },
   twitter:  { title: "Cybersecurity  GRC", description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries." },
 };
@@ -53,7 +54,7 @@ export default function CybersecurityGRCPage() {
       breadcrumbs={[{ label: "Cybersecurity & GRC", href: "/services/cybersecurity-grc" }]}
       accent="#7C3AED"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

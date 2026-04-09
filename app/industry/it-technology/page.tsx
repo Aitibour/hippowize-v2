@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "IT  Technology",
   description: "Technology strategy, platform modernization, and transformation delivery for IT-native companies scaling with confidence.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/industry/it-technology" },
   openGraph: { title: "IT  Technology", description: "Technology strategy, platform modernization, and transformation delivery for IT-native companies scaling with confidence." },
   twitter:  { title: "IT  Technology", description: "Technology strategy, platform modernization, and transformation delivery for IT-native companies scaling with confidence." },
 };
@@ -56,7 +57,7 @@ export default function ITTechnologyPage() {
       breadcrumbs={[{ label: "IT & Technology", href: "/industry/it-technology" }]}
       accent="#2563EB"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

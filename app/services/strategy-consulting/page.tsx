@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Strategy Consulting",
   description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/services/strategy-consulting" },
   openGraph: { title: "Strategy Consulting", description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory." },
   twitter:  { title: "Strategy Consulting", description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory." },
 };
@@ -30,7 +31,7 @@ export default function StrategyConsultingPage() {
       accent="#2563EB"
     >
       {/* What We Do */}
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

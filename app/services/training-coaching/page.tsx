@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Training  Coaching",
   description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/services/training-coaching" },
   openGraph: { title: "Training  Coaching", description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization." },
   twitter:  { title: "Training  Coaching", description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization." },
 };
@@ -29,7 +30,7 @@ export default function TrainingCoachingPage() {
       breadcrumbs={[{ label: "Services", href: "/#services" }, { label: "Training & Coaching", href: "/services/training-coaching" }]}
       accent="#F59E0B"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

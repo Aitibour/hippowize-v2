@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Energy  Utilities",
   description: "Digital operations, grid modernization, and compliance solutions for energy and utilities organizations.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/industry/energy-utilities" },
   openGraph: { title: "Energy  Utilities", description: "Digital operations, grid modernization, and compliance solutions for energy and utilities organizations." },
   twitter:  { title: "Energy  Utilities", description: "Digital operations, grid modernization, and compliance solutions for energy and utilities organizations." },
 };
@@ -53,7 +54,7 @@ export default function EnergyUtilitiesPage() {
       breadcrumbs={[{ label: "Energy & Utilities", href: "/industry/energy-utilities" }]}
       accent="#D97706"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

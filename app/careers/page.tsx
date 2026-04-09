@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import SubpageLayout from "@/components/SubpageLayout";
 
 export const metadata: Metadata = {
   title: "Careers",
   description: "Join the Hippowize team. We hire consultants, strategists, and technologists passionate about delivering real outcomes for organizations worldwide.",
-  openGraph: { title: "Careers at Hippowize", description: "Join a team of consultants delivering real outcomes across cybersecurity, digital transformation, and strategy." },
+  alternates: { canonical: "https://hippowize-v2.netlify.app/careers" },
+  openGraph: { title: "Careers", description: "Join a team of consultants delivering real outcomes across cybersecurity, digital transformation, and strategy." },
 };
-import SubpageLayout from "@/components/SubpageLayout";
+
 
 const openings = [
   { title: "ServiceNow Architect",        location: "Toronto, CA (Remote)",  type: "Full-time",  dept: "Digital Transformation" },

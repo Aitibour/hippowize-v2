@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Professional Services",
   description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/services/professional-services" },
   openGraph: { title: "Professional Services", description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals." },
   twitter:  { title: "Professional Services", description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals." },
 };
@@ -29,7 +30,7 @@ export default function ProfessionalServicesPage() {
       breadcrumbs={[{ label: "Services", href: "/#services" }, { label: "Professional Services", href: "/services/professional-services" }]}
       accent="#059669"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1461685265823-f8d6d117a1e4?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1461685265823-f8d6d117a1e4?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

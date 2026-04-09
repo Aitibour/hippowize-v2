@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
+const BASE_URL = "https://hippowize-v2.netlify.app";
+
 interface Breadcrumb {
   label: string;
   href: string;
@@ -25,8 +27,26 @@ export default function SubpageLayout({
   compact = false,
   children,
 }: SubpageLayoutProps) {
+  // BreadcrumbList schema — static props only, no user input
+  const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+      ...breadcrumbs.map((b, i) => ({
+        "@type": "ListItem",
+        position: i + 2,
+        name: b.label,
+        item: `${BASE_URL}${b.href}`,
+      })),
+    ],
+  });
+
   return (
     <>
+      {/* BreadcrumbList structured data — static content, no user input */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbSchema }} />
+
       {/* Hero */}
       <div
         className={["subpage-hero", compact ? "subpage-hero--compact" : ""].filter(Boolean).join(" ")}
@@ -79,7 +99,7 @@ export default function SubpageLayout({
           <polyline points="1380,420 1380,460 1340,460" stroke="rgb(124 58 237 / 50%)" strokeWidth="2" fill="none" />
         </svg>
 
-        {/* Floating content — no glass card */}
+        {/* Floating content */}
         <div className="container subpage-hero-inner">
           <nav className="subpage-breadcrumb" aria-label="Breadcrumb">
             <Link href="/">Home</Link>

@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Government  Public Sector",
   description: "Digital government, IT modernization, and GRC solutions that serve citizens while meeting regulatory obligations.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/industry/government" },
   openGraph: { title: "Government  Public Sector", description: "Digital government, IT modernization, and GRC solutions that serve citizens while meeting regulatory obligations." },
   twitter:  { title: "Government  Public Sector", description: "Digital government, IT modernization, and GRC solutions that serve citizens while meeting regulatory obligations." },
 };
@@ -53,7 +54,7 @@ export default function GovernmentPage() {
       breadcrumbs={[{ label: "Government & Public Sector", href: "/industry/government" }]}
       accent="#1E40AF"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1569025743873-ea3a9ade89f9?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">

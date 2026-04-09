@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Financial Services",
   description: "Risk management, regulatory compliance, and digital transformation for banks, insurers, and financial institutions.",
+  alternates: { canonical: "https://hippowize-v2.netlify.app/industry/financial-services" },
   openGraph: { title: "Financial Services", description: "Risk management, regulatory compliance, and digital transformation for banks, insurers, and financial institutions." },
   twitter:  { title: "Financial Services", description: "Risk management, regulatory compliance, and digital transformation for banks, insurers, and financial institutions." },
 };
@@ -53,7 +54,7 @@ export default function FinancialServicesPage() {
       breadcrumbs={[{ label: "Financial Services", href: "/industry/financial-services" }]}
       accent="#7C3AED"
     >
-      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1400&q=80')" }}>
+      <section className="sp-section sp-section--has-bg" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=75')" }}>
         <div className="sp-section-bg-overlay" />
         <div className="container">
           <div className="sp-intro-grid">
