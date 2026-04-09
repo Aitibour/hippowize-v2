@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import SubpageLayout from "@/components/SubpageLayout";
+
+export const metadata: Metadata = {
+  title: "Client Stories",
+  description: "Client stories and case studies from Hippowize — real outcomes delivered across cybersecurity, digital transformation, and strategy consulting.",
+  openGraph: { title: "Client Stories | Hippowize", description: "Real outcomes delivered across cybersecurity, digital transformation, and strategy consulting." },
+};
 
 const stories = [
   {

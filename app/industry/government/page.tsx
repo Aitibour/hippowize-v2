@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Government  Public Sector",
+  description: "Digital government, IT modernization, and GRC solutions that serve citizens while meeting regulatory obligations.",
+  openGraph: { title: "Government  Public Sector", description: "Digital government, IT modernization, and GRC solutions that serve citizens while meeting regulatory obligations." },
+  twitter:  { title: "Government  Public Sector", description: "Digital government, IT modernization, and GRC solutions that serve citizens while meeting regulatory obligations." },
+};
+
+
 const solutions = [
   { icon: "fa-building-columns", title: "Digital Government",      body: "Citizen-facing digital service delivery, back-office automation, and e-government platform modernization." },
   { icon: "fa-shield-halved",    title: "Sovereign Cybersecurity", body: "National cybersecurity frameworks, critical infrastructure protection, and government GRC programs." },

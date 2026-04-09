@@ -4,12 +4,12 @@ const BASE =
   "https://wp.w3layouts.com/execution/wp-content/themes/execution/assets/images";
 
 const logos = [
-  { src: `${BASE}/logo1.png`, alt: "Partner logo 1" },
-  { src: `${BASE}/logo2.png`, alt: "Partner logo 2" },
-  { src: `${BASE}/logo3.png`, alt: "Partner logo 3" },
-  { src: `${BASE}/logo4.png`, alt: "Partner logo 4" },
-  { src: `${BASE}/logo5.png`, alt: "Partner logo 5" },
-  { src: `${BASE}/logo1.png`, alt: "Partner logo 6" },
+  { src: `${BASE}/logo1.png`, alt: "Technology partner logo" },
+  { src: `${BASE}/logo2.png`, alt: "Strategic partner logo" },
+  { src: `${BASE}/logo3.png`, alt: "Platform partner logo" },
+  { src: `${BASE}/logo4.png`, alt: "Solution partner logo" },
+  { src: `${BASE}/logo5.png`, alt: "Industry partner logo" },
+  { src: `${BASE}/logo1.png`, alt: "Alliance partner logo" },
 ];
 
 export default function Brands() {

@@ -30,17 +30,6 @@ export default function Team() {
             <article className="team-card" key={m.name}>
               <div className="team-media">
                 <Image src={m.img} alt={m.name} width={400} height={400} />
-                <div className="team-overlay">
-                  <a href="#" aria-label="LinkedIn">
-                    <i className="fa-brands fa-linkedin-in" />
-                  </a>
-                  <a href="#" aria-label="Twitter">
-                    <i className="fa-brands fa-twitter" />
-                  </a>
-                  <a href="#" aria-label="Facebook">
-                    <i className="fa-brands fa-facebook-f" />
-                  </a>
-                </div>
               </div>
               <div className="team-body">
                 <h3 className={m.accent ? "accent" : undefined}>{m.name}</h3>

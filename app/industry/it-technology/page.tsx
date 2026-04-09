@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "IT  Technology",
+  description: "Technology strategy, platform modernization, and transformation delivery for IT-native companies scaling with confidence.",
+  openGraph: { title: "IT  Technology", description: "Technology strategy, platform modernization, and transformation delivery for IT-native companies scaling with confidence." },
+  twitter:  { title: "IT  Technology", description: "Technology strategy, platform modernization, and transformation delivery for IT-native companies scaling with confidence." },
+};
+
+
 const solutions = [
   { icon: "fa-shield-halved",   title: "Cybersecurity Posture",   body: "Security architecture reviews, penetration testing strategy, and GRC alignment for technology organizations." },
   { icon: "fa-cloud",           title: "Cloud-Native Transition",  body: "Moving from on-premise to cloud-first infrastructure using AWS, Azure, or GCP with zero downtime strategies." },

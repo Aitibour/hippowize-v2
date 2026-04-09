@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Strategy Consulting",
+  description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory.",
+  openGraph: { title: "Strategy Consulting", description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory." },
+  twitter:  { title: "Strategy Consulting", description: "Align technology investments with lasting business value — from PMO to VMO, enterprise architecture, and executive advisory." },
+};
+
+
 const outcomes = [
   { icon: "fa-chess-king",      title: "PMO to VMO",             body: "Transition from project-focused governance to value-driven operating models that align delivery with strategic outcomes." },
   { icon: "fa-shield-halved",   title: "Cybersecurity Strategy", body: "End-to-end cyber risk assessments, framework alignment (NIST, ISO 27001), and security roadmaps built for your sector." },

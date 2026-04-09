@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Healthcare",
+  description: "Clinical IT modernization, data platforms, and compliance solutions for healthcare providers and life sciences organizations.",
+  openGraph: { title: "Healthcare", description: "Clinical IT modernization, data platforms, and compliance solutions for healthcare providers and life sciences organizations." },
+  twitter:  { title: "Healthcare", description: "Clinical IT modernization, data platforms, and compliance solutions for healthcare providers and life sciences organizations." },
+};
+
+
 const solutions = [
   { icon: "fa-hospital",        title: "Clinical IT Modernization",  body: "EHR integrations, clinical workflow automation, and patient data platform modernization for healthcare providers." },
   { icon: "fa-shield-halved",   title: "Healthcare Cybersecurity",   body: "HIPAA-aligned security posture assessments, GRC frameworks, and continuous monitoring for healthcare organizations." },

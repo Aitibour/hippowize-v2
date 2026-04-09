@@ -4,8 +4,8 @@ const BASE =
   "https://wp.w3layouts.com/execution/wp-content/uploads/sites/39/2021/04";
 
 const posts = [
-  { img: `${BASE}/blog1.jpg`, alt: "VMO article", title: "Why Every Organization Needs a VMO", date: "April 7, 2026" },
-  { img: `${BASE}/blog2.jpg`, alt: "AI Transformation article", title: "AI-Driven Transformation: Where to Start", date: "April 7, 2026" },
+  { img: `${BASE}/blog1.jpg`, alt: "Why Every Organization Needs a VMO — article thumbnail", title: "Why Every Organization Needs a VMO" },
+  { img: `${BASE}/blog2.jpg`, alt: "AI-Driven Transformation: Where to Start — article thumbnail", title: "AI-Driven Transformation: Where to Start" },
 ];
 
 export default function Blog() {
@@ -35,12 +35,9 @@ export default function Blog() {
                 />
               </div>
               <div className="blog-body">
-                <a href="#">{post.title}</a>
+                <span className="blog-title">{post.title}</span>
                 <div className="blog-meta">
-                  <span>{post.date}</span>
-                  <button aria-label="Read post">
-                    <i className="fa-solid fa-plus" />
-                  </button>
+                  <span className="blog-coming-soon">Coming soon</span>
                 </div>
               </div>
             </article>

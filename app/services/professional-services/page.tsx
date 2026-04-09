@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Professional Services",
+  description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals.",
+  openGraph: { title: "Professional Services", description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals." },
+  twitter:  { title: "Professional Services", description: "Expert consultants embedded in your teams to deliver projects on time, on budget, and aligned to business goals." },
+};
+
+
 const offerings = [
   { icon: "fa-user-tie",      title: "On-Demand Specialists",   body: "Access certified consultants, architects, and engineers for specific project phases — without long-term commitments." },
   { icon: "fa-people-group",  title: "Delivery Support",        body: "Augment your internal teams with seasoned delivery professionals who integrate seamlessly and hit the ground running." },

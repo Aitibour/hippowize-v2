@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Training  Coaching",
+  description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization.",
+  openGraph: { title: "Training  Coaching", description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization." },
+  twitter:  { title: "Training  Coaching", description: "Build lasting internal capability through structured learning programs, coaching, and certification pathways tailored to your organization." },
+};
+
+
 const programs = [
   { icon: "fa-jira",          title: "Jira & Confluence",     body: "Hands-on training for Atlassian tools — from basic navigation to advanced workflow configuration and reporting." },
   { icon: "fa-arrows-spin",   title: "Agile & Scrum",         body: "Certified Scrum training and coaching that builds genuine agility — not just the ceremonies and vocabulary." },

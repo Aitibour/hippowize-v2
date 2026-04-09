@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Cybersecurity  GRC",
+  description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries.",
+  openGraph: { title: "Cybersecurity  GRC", description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries." },
+  twitter:  { title: "Cybersecurity  GRC", description: "End-to-end cyber risk management, GRC frameworks, and security strategy aligned to NIST and ISO 27001 for regulated industries." },
+};
+
+
 const solutions = [
   { icon: "fa-shield-halved",   title: "Cybersecurity Strategy",    body: "Risk-aligned cybersecurity roadmaps, security architecture reviews, and executive-level security programme design." },
   { icon: "fa-file-contract",   title: "GRC Implementation",        body: "Governance, Risk & Compliance frameworks built to ISO 27001, NIST, SOC 2, and sector-specific regulatory standards." },

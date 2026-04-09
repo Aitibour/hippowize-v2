@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Energy  Utilities",
+  description: "Digital operations, grid modernization, and compliance solutions for energy and utilities organizations.",
+  openGraph: { title: "Energy  Utilities", description: "Digital operations, grid modernization, and compliance solutions for energy and utilities organizations." },
+  twitter:  { title: "Energy  Utilities", description: "Digital operations, grid modernization, and compliance solutions for energy and utilities organizations." },
+};
+
+
 const solutions = [
   { icon: "fa-bolt",            title: "Grid Modernization",        body: "Smart grid architecture, SCADA system integration, and operational technology (OT) platform modernization." },
   { icon: "fa-shield-halved",   title: "OT/IT Cybersecurity",       body: "Converged OT/IT security frameworks, NERC-CIP compliance, and critical infrastructure protection programs." },

@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Financial Services",
+  description: "Risk management, regulatory compliance, and digital transformation for banks, insurers, and financial institutions.",
+  openGraph: { title: "Financial Services", description: "Risk management, regulatory compliance, and digital transformation for banks, insurers, and financial institutions." },
+  twitter:  { title: "Financial Services", description: "Risk management, regulatory compliance, and digital transformation for banks, insurers, and financial institutions." },
+};
+
+
 const solutions = [
   { icon: "fa-landmark",        title: "Regulatory Compliance",   body: "SOX, Basel III, MiFID II, and AML compliance programs built around your regulatory obligations and audit timeline." },
   { icon: "fa-shield-halved",   title: "Financial Cybersecurity", body: "Threat-led assessments, GRC alignment, and security monitoring designed for the financial sector's risk environment." },

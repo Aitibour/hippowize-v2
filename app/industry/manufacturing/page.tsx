@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Manufacturing  Supply Chain",
+  description: "Smart manufacturing, ERP optimization, and supply chain resilience programs for industrial organizations.",
+  openGraph: { title: "Manufacturing  Supply Chain", description: "Smart manufacturing, ERP optimization, and supply chain resilience programs for industrial organizations." },
+  twitter:  { title: "Manufacturing  Supply Chain", description: "Smart manufacturing, ERP optimization, and supply chain resilience programs for industrial organizations." },
+};
+
+
 const solutions = [
   { icon: "fa-industry",         title: "Smart Manufacturing",       body: "Industry 4.0 adoption, IoT integration, and digital factory programmes that connect the shop floor to enterprise systems." },
   { icon: "fa-diagram-project",  title: "Supply Chain Optimization", body: "End-to-end supply chain visibility, demand planning platforms, and supplier network digitization for resilient operations." },

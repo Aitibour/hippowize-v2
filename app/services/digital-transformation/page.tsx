@@ -1,6 +1,16 @@
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Digital Transformation",
+  description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution.",
+  openGraph: { title: "Digital Transformation", description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution." },
+  twitter:  { title: "Digital Transformation", description: "ServiceNow, AI, cloud, and automation delivered end-to-end by specialists who stay through execution." },
+};
+
+
 const capabilities = [
   { icon: "fa-ticket",       title: "ServiceNow",          body: "Full-lifecycle ServiceNow delivery — ITSM, HRSD, CSM, SPM, and custom applications built by certified specialists." },
   { icon: "fa-robot",        title: "AI & Data Platforms", body: "AI strategy, data engineering, and ML model deployment that turn your data into competitive advantage." },
