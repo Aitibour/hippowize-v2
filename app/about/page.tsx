@@ -77,7 +77,7 @@ export default function AboutPage() {
                 Start a Conversation
               </Link>
             </div>
-            <div className="about-page-img-wrap">
+            <div className="about-page-img-wrap" style={{ position: "relative", minHeight: 360 }}>
               <Image
                 src="https://wp.w3layouts.com/execution/wp-content/themes/execution/assets/images/about.jpg"
                 alt="Hippowize consulting team"
