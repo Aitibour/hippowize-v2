@@ -39,12 +39,17 @@ export default function ContactForm() {
     );
   }
 
+  // Netlify forms: data-netlify and netlify-honeypot are non-standard HTML attrs
+  const netlifyFormProps = {
+    "data-netlify": "true",
+    "netlify-honeypot": "bot-field",
+  } as Record<string, string>;
+
   return (
     <form
       name="contact"
       method="POST"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
+      {...netlifyFormProps}
       onSubmit={handleSubmit}
       className="contact-form"
     >
