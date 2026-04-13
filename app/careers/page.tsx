@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import SubpageLayout from "@/components/SubpageLayout";
+import CareersOpenings from "@/components/CareersOpenings";
 
 export const metadata: Metadata = {
   title: "Careers",
@@ -8,16 +9,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://hippowize-v2.netlify.app/careers" },
   openGraph: { title: "Careers", description: "Join a team of consultants delivering real outcomes across cybersecurity, digital transformation, and strategy." },
 };
-
-
-const openings = [
-  { title: "ServiceNow Architect",        location: "Toronto, CA (Remote)",  type: "Full-time",  dept: "Digital Transformation" },
-  { title: "GRC Consultant",              location: "Toronto, CA (Hybrid)",  type: "Full-time",  dept: "Strategy Consulting"    },
-  { title: "SAFe Program Consultant",     location: "Toronto, CA (Remote)",  type: "Contract",   dept: "Training & Coaching"    },
-  { title: "Cloud Migration Engineer",    location: "Toronto, CA (Hybrid)",  type: "Full-time",  dept: "Digital Transformation" },
-  { title: "Cybersecurity Analyst",       location: "Toronto, CA (Hybrid)",  type: "Full-time",  dept: "Strategy Consulting"    },
-  { title: "Agile Coach",                 location: "Global (Remote)",       type: "Contract",   dept: "Training & Coaching"    },
-];
 
 const values = [
   {
@@ -56,6 +47,18 @@ export default function CareersPage() {
       accent="#2563EB"
       compact
     >
+      {/* Hidden form for Netlify post-processing detection (required for JS-rendered forms) */}
+      <form name="job-application" data-netlify="true" encType="multipart/form-data" hidden>
+        <input type="hidden" name="form-name" value="job-application" />
+        <input name="position" type="hidden" />
+        <input name="full-name" type="text" />
+        <input name="email" type="email" />
+        <input name="phone" type="tel" />
+        <input name="country" type="text" />
+        <input name="linkedin" type="url" />
+        <input name="cv" type="file" />
+      </form>
+
       {/* Values */}
       <section className="sp-section">
         <div className="container">
@@ -96,21 +99,7 @@ export default function CareersPage() {
             <p className="eyebrow">Open Roles</p>
             <h2>Current opportunities</h2>
           </div>
-          <div className="careers-list">
-            {openings.map((o) => (
-              <div className="career-row" key={o.title}>
-                <div className="career-info">
-                  <h3>{o.title}</h3>
-                  <div className="career-meta">
-                    <span><i className="fa-solid fa-location-dot" /> {o.location}</span>
-                    <span><i className="fa-solid fa-briefcase" /> {o.dept}</span>
-                    <span className={`career-type ${o.type === "Contract" ? "contract" : "fulltime"}`}>{o.type}</span>
-                  </div>
-                </div>
-                <a href="mailto:careers@hippowize.com" className="btn-primary" style={{ marginTop: 0, whiteSpace: "nowrap" }}>Apply Now</a>
-              </div>
-            ))}
-          </div>
+          <CareersOpenings />
         </div>
       </section>
 
@@ -122,10 +111,7 @@ export default function CareersPage() {
               <p className="eyebrow">Don&apos;t See Your Role?</p>
               <h2>Send us a spontaneous application</h2>
               <p>We&apos;re always looking for exceptional consultants, architects, and coaches. If you don&apos;t see the right role listed, send us your profile and tell us how you can contribute.</p>
-              <a href="mailto:careers@hippowize.com" className="btn-primary" style={{ marginTop: 24 }}>
-                <i className="fa-solid fa-envelope" style={{ marginRight: 8 }} />
-                careers@hippowize.com
-              </a>
+              <CareersOpenings spontaneous />
             </div>
             <div className="sp-highlight-box">
               <i className="fa-solid fa-globe sp-highlight-icon" />
