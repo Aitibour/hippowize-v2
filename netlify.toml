@@ -5,6 +5,23 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# ── Security headers (applied at Netlify CDN level for all routes) ─────────────
+# NOTE: next.config.ts headers() is unused with output:"export" — this is the
+# only place these are delivered.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    # unsafe-inline in script-src is required: Next.js 15 App Router static export
+    # injects RSC flight-data inline scripts (self.__next_f.push) that cannot be
+    # hashed or nonced in a static build. All other directives are strict.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https://wp.w3layouts.com https://images.unsplash.com; media-src 'self' https://wp.w3layouts.com; connect-src 'self' https://api.netlify.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+
+# ── Cache headers ──────────────────────────────────────────────────────────────
 # Aggressively cache Next.js static chunks (content-hashed filenames = safe forever)
 [[headers]]
   for = "/_next/static/*"

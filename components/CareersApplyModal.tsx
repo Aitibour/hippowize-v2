@@ -34,10 +34,33 @@ export default function CareersApplyModal({ job, onClose }: Props) {
     };
   }, [onClose]);
 
+  const [fileError, setFileError] = useState<string | null>(null);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
+    setFileError(null);
+
     const form = e.currentTarget;
+    const cvInput = form.elements.namedItem("cv") as HTMLInputElement;
+    const cvFile = cvInput?.files?.[0];
+
+    if (cvFile) {
+      const allowed = [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ];
+      if (!allowed.includes(cvFile.type)) {
+        setFileError("Only PDF, DOC or DOCX files are accepted.");
+        return;
+      }
+      if (cvFile.size > 10 * 1024 * 1024) {
+        setFileError("File exceeds the 10 MB limit. Please compress or upload a smaller file.");
+        return;
+      }
+    }
+
+    setStatus("submitting");
     const data = new FormData(form);
     try {
       const res = await fetch("/", { method: "POST", body: data });
@@ -87,10 +110,14 @@ export default function CareersApplyModal({ job, onClose }: Props) {
               encType="multipart/form-data"
               onSubmit={handleSubmit}
               className="apply-form"
-              {...{ "data-netlify": "true" } as Record<string, string>}
+              {...{ "data-netlify": "true", "netlify-honeypot": "bot-field" } as Record<string, string>}
             >
               <input type="hidden" name="form-name" value="job-application" />
               <input type="hidden" name="position" value={job} />
+              {/* Honeypot — hidden from humans, traps bots */}
+              <p style={{ display: "none" }} aria-hidden="true">
+                <label>Leave this blank: <input name="bot-field" tabIndex={-1} /></label>
+              </p>
 
               <div className="apply-field-row">
                 <div className="apply-field">
@@ -175,6 +202,7 @@ export default function CareersApplyModal({ job, onClose }: Props) {
                   />
                 </label>
                 <p className="apply-file-hint">PDF, DOC or DOCX · Max 10 MB</p>
+                {fileError && <p className="apply-error" style={{ marginTop: 4 }}>{fileError}</p>}
               </div>
 
               {status === "error" && (

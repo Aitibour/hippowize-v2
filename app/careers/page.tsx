@@ -48,8 +48,11 @@ export default function CareersPage() {
       compact
     >
       {/* Hidden form for Netlify post-processing detection (required for JS-rendered forms) */}
-      <form name="job-application" data-netlify="true" encType="multipart/form-data" hidden>
+      {/* Hidden form for Netlify post-processing detection (required for JS-rendered forms) */}
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+      <form name="job-application" data-netlify="true" {...{ "netlify-honeypot": "bot-field" } as any} encType="multipart/form-data" hidden>
         <input type="hidden" name="form-name" value="job-application" />
+        <input name="bot-field" type="text" />
         <input name="position" type="hidden" />
         <input name="full-name" type="text" />
         <input name="email" type="email" />
